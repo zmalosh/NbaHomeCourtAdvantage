@@ -12,6 +12,7 @@ The research was intended to be used in the creation of a Monte Carlo simulation
 * Add variables for both total trip length and current progression into the current trip for the away team
   + This would be for number of days, number of games, and distance traveled.
 * Look at the home court advantage on a stadium-by-stadium basis.
+* Consider the impact of rivalries. This could be either structurally based (i.e. same division) or based on external considerations (such as an investigation of interactions on Twitter between fan bases).
 * Introduce a new section that introduces new models for postseason games.
 * Focus on using the _tidyverse_
   + _tidyverse_ is a collection of libraries with a common approach to common data science functions. This common approach and the surrounding community allow for improved support and debugging

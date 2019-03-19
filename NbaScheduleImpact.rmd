@@ -4,7 +4,7 @@ author:
 - "Author: Zachary P. Malosh^[University of Cincinnati - Masters Candidate, Fox Sports - Predictions Team Lead (zachary.malosh@foxsports.com)]"
 - "Reader: Michael Magazine, PhD ^[University of Cincinnati - Professor and Ohio Eminent Scholar]"
 - "Reader: Tom Zentmeyer, MBA^[Fox Sports - Vice President of Technology]"
-date: "`r format(Sys.time(), '%Y %B %d')`"
+date: "30 November 2017"
 abstract: "Every year, the NBA releases their league schedule for the coming year. The construction of the schedule contains many potential schedule-based factors (such as rest, travel, and home court) that can impact each game. Understanding the impact of these factors is possible by creating a regression model that quantifies the team performance in a particular game in terms of final score and fouls committed. Ultimately, rest, distance, attendance, and time in the season had direct impact on the final score of the game while the attendance at a game led to an advantage in fouls called against the home team. The quantification of the impact of these factors can be used to anticipate variations in performance to improve accuracy in a Monte Carlo simulation."
 output:
   pdf_document:

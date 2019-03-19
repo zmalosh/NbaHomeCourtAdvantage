@@ -216,6 +216,8 @@ corrplot::corrplot(scheduleCor, tl.col = 'black', number.font = 2, method = 'num
 
 The above matrix shows that there is only 1 sets of strongly correlated (r > 0.7) variables in the schedule-based/result variable set. That is the pair of the *HomeGameNumber* and *AwayGameNumber* variables. These variables have a perfect correlation of r=1. As such, *AwayGameNumber* was dropped moving forward.
 
+\newpage
+
 ####Past Game Window Statistics
 The past game window statistics (namely score, rebounds, blocks, assists, steals, turnovers, fouls, and free throw attempts) were evaluated to determine if there was a correlation between statistics. The full correlation matrix can be found in the appendix. The following pairs were determined to be strongly correlated:
 
@@ -312,6 +314,7 @@ nba.score.away.plot <- ggplot(data = nba.games, aes(nba.games$AwayScore)) +
 	geom_density(col = 2, bw = binWidth)
 grid.arrange(nba.score.home.plot, nba.score.away.plot, ncol = 2)
 ```
+\newpage
 
 ###Model Creation
 
@@ -427,8 +430,6 @@ The above plots show that the regression is a solid fit and does not show charac
 
 ###Model Interpretation
 Both regression models ultimately included both baseline stats in the final variable selection. In fact, both foul models have approximately equal estimates between the team baseline stat (*PrevHomeFouls*/*PrevAwayFouls*) and the opponent allowed baseline stat (*PrevOppAwayFouls*/*PrevOppHomeFouls*). The home foul model includes a negative coefficient estimate of approximately `r round(nba.fouls.home.model$coefficients[["Attendance"]], digits = 3)` for each 1000 fans in attendance at a particular game. This means that with approximately 16000 fans, the home team has one foul less called against them. Given that the Q1 to Q3 range for attendance (in thousands) is [`r round(quantile(nba.games$Attendance, 0.25), digits = 2)`, `r round(quantile(nba.games$Attendance, 0.75), digits = 2)`] and the mean value is `r round(mean(nba.games$Attendance), digits = 2)`, most games have the home team aided by having one less foul called during the game than the away team. This also means that teams that have a smaller attendance will be less likely to have the reduction in fouls for the home team. The flip of that is also true: a home team that has extremely high attendance is more likely to have this reduction in fouls amplified. One potential explanation for this is that the officials are more leniant toward the home team in order to please the crowd. The officials, in general, call a similiar-but-not-equal number of fouls between the two teams. This model potentially identifies the reason for the statistical inequality previously tested and confirmed. Alternatively, this may be explained by the home team playing higher quality basketball due to the energy of the crowd. Regardless of the reason why, the size of the home crowd is advantageous for the home team in terms of fouls called during a home game.
-
-\newpage
 
 #Conclusion
 The impact of scheduling can be seen in the performance of teams in the NBA. From the number of rest days to the distance that the away team is from home, the scheduling impact can be seen directly in the score line of any NBA game. Additionally, the only scheduling variable which impacted both points and fouls in a game was the number of fans that a given team was able to have for a given game. With these advantages measured, the impact of scheduling can be efficiently included in a Monte Carlo simulation to predict the expected outcome of NBA games in the currently scheduled season.

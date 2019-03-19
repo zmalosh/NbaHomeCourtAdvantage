@@ -1,0 +1,901 @@
+A,B,StadDistMiles
+TD Garden (BOS),TD Garden (BOS),0
+TD Garden (BOS),Barclays Center (BKN),190
+TD Garden (BOS),Madison Square Garden (NY),188
+TD Garden (BOS),Wells Fargo Center (PHI),273
+TD Garden (BOS),Air Canada Centre (TOR),430
+TD Garden (BOS),United Center (CHI),853
+TD Garden (BOS),Quicken Loans Arena (CLE),550
+TD Garden (BOS),The Palace of Auburn Hills (DET),622
+TD Garden (BOS),Bankers Life Fieldhouse (IND),807
+TD Garden (BOS),BMO Harris Bradley Center (MIL),858
+TD Garden (BOS),Philips Arena (ATL),936
+TD Garden (BOS),Spectrum Center (CHA),720
+TD Garden (BOS),AmericanAirlines Arena (MIA),1254
+TD Garden (BOS),Amway Center (ORL),1114
+TD Garden (BOS),Verizon Center (WSH),393
+TD Garden (BOS),ORACLE Arena (GS),2691
+TD Garden (BOS),Staples Center (LAC),2598
+TD Garden (BOS),Staples Center (LAL),2598
+TD Garden (BOS),Talking Stick Resort Arena (PHX),2299
+TD Garden (BOS),Golden 1 Center (SAC),2631
+TD Garden (BOS),American Airlines Center (DAL),1558
+TD Garden (BOS),Toyota Center (HOU),1605
+TD Garden (BOS),FedExForum (MEM),1136
+TD Garden (BOS),Smoothie King Center (NO),1358
+TD Garden (BOS),AT&T Center (SA),1764
+TD Garden (BOS),Pepsi Center (DEN),1770
+TD Garden (BOS),Target Center (MIN),1126
+TD Garden (BOS),Chesapeake Energy Arena (OKC),1495
+TD Garden (BOS),Moda Center at the Rose Quarter (POR),2539
+TD Garden (BOS),Vivint Smart Home Arena (UTA),2098
+Barclays Center (BKN),TD Garden (BOS),190
+Barclays Center (BKN),Barclays Center (BKN),0
+Barclays Center (BKN),Madison Square Garden (NY),4
+Barclays Center (BKN),Wells Fargo Center (PHI),82
+Barclays Center (BKN),Air Canada Centre (TOR),344
+Barclays Center (BKN),United Center (CHI),716
+Barclays Center (BKN),Quicken Loans Arena (CLE),406
+Barclays Center (BKN),The Palace of Auburn Hills (DET),498
+Barclays Center (BKN),Bankers Life Fieldhouse (IND),646
+Barclays Center (BKN),BMO Harris Bradley Center (MIL),736
+Barclays Center (BKN),Philips Arena (ATL),746
+Barclays Center (BKN),Spectrum Center (CHA),530
+Barclays Center (BKN),AmericanAirlines Arena (MIA),1087
+Barclays Center (BKN),Amway Center (ORL),936
+Barclays Center (BKN),Verizon Center (WSH),203
+Barclays Center (BKN),ORACLE Arena (GS),2565
+Barclays Center (BKN),Staples Center (LAC),2453
+Barclays Center (BKN),Staples Center (LAL),2453
+Barclays Center (BKN),Talking Stick Resort Arena (PHX),2145
+Barclays Center (BKN),Golden 1 Center (SAC),2508
+Barclays Center (BKN),American Airlines Center (DAL),1381
+Barclays Center (BKN),Toyota Center (HOU),1419
+Barclays Center (BKN),FedExForum (MEM),955
+Barclays Center (BKN),Smoothie King Center (NO),1168
+Barclays Center (BKN),AT&T Center (SA),1580
+Barclays Center (BKN),Pepsi Center (DEN),1634
+Barclays Center (BKN),Target Center (MIN),1023
+Barclays Center (BKN),Chesapeake Energy Arena (OKC),1328
+Barclays Center (BKN),Moda Center at the Rose Quarter (POR),2447
+Barclays Center (BKN),Vivint Smart Home Arena (UTA),1974
+Madison Square Garden (NY),TD Garden (BOS),188
+Madison Square Garden (NY),Barclays Center (BKN),4
+Madison Square Garden (NY),Madison Square Garden (NY),0
+Madison Square Garden (NY),Wells Fargo Center (PHI),85
+Madison Square Garden (NY),Air Canada Centre (TOR),340
+Madison Square Garden (NY),United Center (CHI),715
+Madison Square Garden (NY),Quicken Loans Arena (CLE),404
+Madison Square Garden (NY),The Palace of Auburn Hills (DET),496
+Madison Square Garden (NY),Bankers Life Fieldhouse (IND),646
+Madison Square Garden (NY),BMO Harris Bradley Center (MIL),734
+Madison Square Garden (NY),Philips Arena (ATL),748
+Madison Square Garden (NY),Spectrum Center (CHA),533
+Madison Square Garden (NY),AmericanAirlines Arena (MIA),1091
+Madison Square Garden (NY),Amway Center (ORL),940
+Madison Square Garden (NY),Verizon Center (WSH),205
+Madison Square Garden (NY),ORACLE Arena (GS),2563
+Madison Square Garden (NY),Staples Center (LAC),2452
+Madison Square Garden (NY),Staples Center (LAL),2452
+Madison Square Garden (NY),Talking Stick Resort Arena (PHX),2145
+Madison Square Garden (NY),Golden 1 Center (SAC),2506
+Madison Square Garden (NY),American Airlines Center (DAL),1381
+Madison Square Garden (NY),Toyota Center (HOU),1420
+Madison Square Garden (NY),FedExForum (MEM),956
+Madison Square Garden (NY),Smoothie King Center (NO),1170
+Madison Square Garden (NY),AT&T Center (SA),1581
+Madison Square Garden (NY),Pepsi Center (DEN),1632
+Madison Square Garden (NY),Target Center (MIN),1021
+Madison Square Garden (NY),Chesapeake Energy Arena (OKC),1328
+Madison Square Garden (NY),Moda Center at the Rose Quarter (POR),2444
+Madison Square Garden (NY),Vivint Smart Home Arena (UTA),1972
+Wells Fargo Center (PHI),TD Garden (BOS),273
+Wells Fargo Center (PHI),Barclays Center (BKN),82
+Wells Fargo Center (PHI),Madison Square Garden (NY),85
+Wells Fargo Center (PHI),Wells Fargo Center (PHI),0
+Wells Fargo Center (PHI),Air Canada Centre (TOR),337
+Wells Fargo Center (PHI),United Center (CHI),668
+Wells Fargo Center (PHI),Quicken Loans Arena (CLE),359
+Wells Fargo Center (PHI),The Palace of Auburn Hills (DET),462
+Wells Fargo Center (PHI),Bankers Life Fieldhouse (IND),583
+Wells Fargo Center (PHI),BMO Harris Bradley Center (MIL),695
+Wells Fargo Center (PHI),Philips Arena (ATL),663
+Wells Fargo Center (PHI),Spectrum Center (CHA),447
+Wells Fargo Center (PHI),AmericanAirlines Arena (MIA),1015
+Wells Fargo Center (PHI),Amway Center (ORL),859
+Wells Fargo Center (PHI),Verizon Center (WSH),120
+Wells Fargo Center (PHI),ORACLE Arena (GS),2514
+Wells Fargo Center (PHI),Staples Center (LAC),2394
+Wells Fargo Center (PHI),Staples Center (LAL),2394
+Wells Fargo Center (PHI),Talking Stick Resort Arena (PHX),2081
+Wells Fargo Center (PHI),Golden 1 Center (SAC),2458
+Wells Fargo Center (PHI),American Airlines Center (DAL),1306
+Wells Fargo Center (PHI),Toyota Center (HOU),1339
+Wells Fargo Center (PHI),FedExForum (MEM),879
+Wells Fargo Center (PHI),Smoothie King Center (NO),1086
+Wells Fargo Center (PHI),AT&T Center (SA),1502
+Wells Fargo Center (PHI),Pepsi Center (DEN),1579
+Wells Fargo Center (PHI),Target Center (MIN),989
+Wells Fargo Center (PHI),Chesapeake Energy Arena (OKC),1258
+Wells Fargo Center (PHI),Moda Center at the Rose Quarter (POR),2413
+Wells Fargo Center (PHI),Vivint Smart Home Arena (UTA),1925
+Air Canada Centre (TOR),TD Garden (BOS),430
+Air Canada Centre (TOR),Barclays Center (BKN),344
+Air Canada Centre (TOR),Madison Square Garden (NY),340
+Air Canada Centre (TOR),Wells Fargo Center (PHI),337
+Air Canada Centre (TOR),Air Canada Centre (TOR),0
+Air Canada Centre (TOR),United Center (CHI),438
+Air Canada Centre (TOR),Quicken Loans Arena (CLE),189
+Air Canada Centre (TOR),The Palace of Auburn Hills (DET),206
+Air Canada Centre (TOR),Bankers Life Fieldhouse (IND),440
+Air Canada Centre (TOR),BMO Harris Bradley Center (MIL),432
+Air Canada Centre (TOR),Philips Arena (ATL),733
+Air Canada Centre (TOR),Spectrum Center (CHA),585
+Air Canada Centre (TOR),AmericanAirlines Arena (MIA),1231
+Air Canada Centre (TOR),Amway Center (ORL),1047
+Air Canada Centre (TOR),Verizon Center (WSH),349
+Air Canada Centre (TOR),ORACLE Arena (GS),2261
+Air Canada Centre (TOR),Staples Center (LAC),2177
+Air Canada Centre (TOR),Staples Center (LAL),2177
+Air Canada Centre (TOR),Talking Stick Resort Arena (PHX),1890
+Air Canada Centre (TOR),Golden 1 Center (SAC),2201
+Air Canada Centre (TOR),American Airlines Center (DAL),1209
+Air Canada Centre (TOR),Toyota Center (HOU),1301
+Air Canada Centre (TOR),FedExForum (MEM),816
+Air Canada Centre (TOR),Smoothie King Center (NO),1112
+Air Canada Centre (TOR),AT&T Center (SA),1437
+Air Canada Centre (TOR),Pepsi Center (DEN),1347
+Air Canada Centre (TOR),Target Center (MIN),696
+Air Canada Centre (TOR),Chesapeake Energy Arena (OKC),1117
+Air Canada Centre (TOR),Moda Center at the Rose Quarter (POR),2114
+Air Canada Centre (TOR),Vivint Smart Home Arena (UTA),1669
+United Center (CHI),TD Garden (BOS),853
+United Center (CHI),Barclays Center (BKN),716
+United Center (CHI),Madison Square Garden (NY),715
+United Center (CHI),Wells Fargo Center (PHI),668
+United Center (CHI),Air Canada Centre (TOR),438
+United Center (CHI),United Center (CHI),0
+United Center (CHI),Quicken Loans Arena (CLE),310
+United Center (CHI),The Palace of Auburn Hills (DET),233
+United Center (CHI),Bankers Life Fieldhouse (IND),166
+United Center (CHI),BMO Harris Bradley Center (MIL),81
+United Center (CHI),Philips Arena (ATL),588
+United Center (CHI),Spectrum Center (CHA),589
+United Center (CHI),AmericanAirlines Arena (MIA),1188
+United Center (CHI),Amway Center (ORL),985
+United Center (CHI),Verizon Center (WSH),598
+United Center (CHI),ORACLE Arena (GS),1848
+United Center (CHI),Staples Center (LAC),1745
+United Center (CHI),Staples Center (LAL),1745
+United Center (CHI),Talking Stick Resort Arena (PHX),1452
+United Center (CHI),Golden 1 Center (SAC),1791
+United Center (CHI),American Airlines Center (DAL),806
+United Center (CHI),Toyota Center (HOU),939
+United Center (CHI),FedExForum (MEM),481
+United Center (CHI),Smoothie King Center (NO),833
+United Center (CHI),AT&T Center (SA),1048
+United Center (CHI),Pepsi Center (DEN),919
+United Center (CHI),Target Center (MIN),355
+United Center (CHI),Chesapeake Energy Arena (OKC),691
+United Center (CHI),Moda Center at the Rose Quarter (POR),1756
+United Center (CHI),Vivint Smart Home Arena (UTA),1258
+Quicken Loans Arena (CLE),TD Garden (BOS),550
+Quicken Loans Arena (CLE),Barclays Center (BKN),406
+Quicken Loans Arena (CLE),Madison Square Garden (NY),404
+Quicken Loans Arena (CLE),Wells Fargo Center (PHI),359
+Quicken Loans Arena (CLE),Air Canada Centre (TOR),189
+Quicken Loans Arena (CLE),United Center (CHI),310
+Quicken Loans Arena (CLE),Quicken Loans Arena (CLE),0
+Quicken Loans Arena (CLE),The Palace of Auburn Hills (DET),115
+Quicken Loans Arena (CLE),Bankers Life Fieldhouse (IND),263
+Quicken Loans Arena (CLE),BMO Harris Bradley Center (MIL),336
+Quicken Loans Arena (CLE),Philips Arena (ATL),553
+Quicken Loans Arena (CLE),Spectrum Center (CHA),434
+Quicken Loans Arena (CLE),AmericanAirlines Arena (MIA),1085
+Quicken Loans Arena (CLE),Amway Center (ORL),893
+Quicken Loans Arena (CLE),Verizon Center (WSH),305
+Quicken Loans Arena (CLE),ORACLE Arena (GS),2159
+Quicken Loans Arena (CLE),Staples Center (LAC),2050
+Quicken Loans Arena (CLE),Staples Center (LAL),2050
+Quicken Loans Arena (CLE),Talking Stick Resort Arena (PHX),1749
+Quicken Loans Arena (CLE),Golden 1 Center (SAC),2102
+Quicken Loans Arena (CLE),American Airlines Center (DAL),1031
+Quicken Loans Arena (CLE),Toyota Center (HOU),1114
+Quicken Loans Arena (CLE),FedExForum (MEM),630
+Quicken Loans Arena (CLE),Smoothie King Center (NO),923
+Quicken Loans Arena (CLE),AT&T Center (SA),1254
+Quicken Loans Arena (CLE),Pepsi Center (DEN),1228
+Quicken Loans Arena (CLE),Target Center (MIN),633
+Quicken Loans Arena (CLE),Chesapeake Energy Arena (OKC),951
+Quicken Loans Arena (CLE),Moda Center at the Rose Quarter (POR),2055
+Quicken Loans Arena (CLE),Vivint Smart Home Arena (UTA),1568
+The Palace of Auburn Hills (DET),TD Garden (BOS),622
+The Palace of Auburn Hills (DET),Barclays Center (BKN),498
+The Palace of Auburn Hills (DET),Madison Square Garden (NY),496
+The Palace of Auburn Hills (DET),Wells Fargo Center (PHI),462
+The Palace of Auburn Hills (DET),Air Canada Centre (TOR),206
+The Palace of Auburn Hills (DET),United Center (CHI),233
+The Palace of Auburn Hills (DET),Quicken Loans Arena (CLE),115
+The Palace of Auburn Hills (DET),The Palace of Auburn Hills (DET),0
+The Palace of Auburn Hills (DET),Bankers Life Fieldhouse (IND),252
+The Palace of Auburn Hills (DET),BMO Harris Bradley Center (MIL),238
+The Palace of Auburn Hills (DET),Philips Arena (ATL),619
+The Palace of Auburn Hills (DET),Spectrum Center (CHA),531
+The Palace of Auburn Hills (DET),AmericanAirlines Arena (MIA),1178
+The Palace of Auburn Hills (DET),Amway Center (ORL),981
+The Palace of Auburn Hills (DET),Verizon Center (WSH),418
+The Palace of Auburn Hills (DET),ORACLE Arena (GS),2071
+The Palace of Auburn Hills (DET),Staples Center (LAC),1977
+The Palace of Auburn Hills (DET),Staples Center (LAL),1977
+The Palace of Auburn Hills (DET),Talking Stick Resort Arena (PHX),1685
+The Palace of Auburn Hills (DET),Golden 1 Center (SAC),2013
+The Palace of Auburn Hills (DET),American Airlines Center (DAL),1011
+The Palace of Auburn Hills (DET),Toyota Center (HOU),1117
+The Palace of Auburn Hills (DET),FedExForum (MEM),636
+The Palace of Auburn Hills (DET),Smoothie King Center (NO),956
+The Palace of Auburn Hills (DET),AT&T Center (SA),1245
+The Palace of Auburn Hills (DET),Pepsi Center (DEN),1148
+The Palace of Auburn Hills (DET),Target Center (MIN),527
+The Palace of Auburn Hills (DET),Chesapeake Energy Arena (OKC),913
+The Palace of Auburn Hills (DET),Moda Center at the Rose Quarter (POR),1951
+The Palace of Auburn Hills (DET),Vivint Smart Home Arena (UTA),1479
+Bankers Life Fieldhouse (IND),TD Garden (BOS),807
+Bankers Life Fieldhouse (IND),Barclays Center (BKN),646
+Bankers Life Fieldhouse (IND),Madison Square Garden (NY),646
+Bankers Life Fieldhouse (IND),Wells Fargo Center (PHI),583
+Bankers Life Fieldhouse (IND),Air Canada Centre (TOR),440
+Bankers Life Fieldhouse (IND),United Center (CHI),166
+Bankers Life Fieldhouse (IND),Quicken Loans Arena (CLE),263
+Bankers Life Fieldhouse (IND),The Palace of Auburn Hills (DET),252
+Bankers Life Fieldhouse (IND),Bankers Life Fieldhouse (IND),0
+Bankers Life Fieldhouse (IND),BMO Harris Bradley Center (MIL),244
+Bankers Life Fieldhouse (IND),Philips Arena (ATL),425
+Bankers Life Fieldhouse (IND),Spectrum Center (CHA),427
+Bankers Life Fieldhouse (IND),AmericanAirlines Arena (MIA),1022
+Bankers Life Fieldhouse (IND),Amway Center (ORL),820
+Bankers Life Fieldhouse (IND),Verizon Center (WSH),492
+Bankers Life Fieldhouse (IND),ORACLE Arena (GS),1941
+Bankers Life Fieldhouse (IND),Staples Center (LAC),1811
+Bankers Life Fieldhouse (IND),Staples Center (LAL),1811
+Bankers Life Fieldhouse (IND),Talking Stick Resort Arena (PHX),1499
+Bankers Life Fieldhouse (IND),Golden 1 Center (SAC),1887
+Bankers Life Fieldhouse (IND),American Airlines Center (DAL),769
+Bankers Life Fieldhouse (IND),Toyota Center (HOU),865
+Bankers Life Fieldhouse (IND),FedExForum (MEM),383
+Bankers Life Fieldhouse (IND),Smoothie King Center (NO),711
+Bankers Life Fieldhouse (IND),AT&T Center (SA),996
+Bankers Life Fieldhouse (IND),Pepsi Center (DEN),1002
+Bankers Life Fieldhouse (IND),Target Center (MIN),513
+Bankers Life Fieldhouse (IND),Chesapeake Energy Arena (OKC),689
+Bankers Life Fieldhouse (IND),Moda Center at the Rose Quarter (POR),1885
+Bankers Life Fieldhouse (IND),Vivint Smart Home Arena (UTA),1357
+BMO Harris Bradley Center (MIL),TD Garden (BOS),858
+BMO Harris Bradley Center (MIL),Barclays Center (BKN),736
+BMO Harris Bradley Center (MIL),Madison Square Garden (NY),734
+BMO Harris Bradley Center (MIL),Wells Fargo Center (PHI),695
+BMO Harris Bradley Center (MIL),Air Canada Centre (TOR),432
+BMO Harris Bradley Center (MIL),United Center (CHI),81
+BMO Harris Bradley Center (MIL),Quicken Loans Arena (CLE),336
+BMO Harris Bradley Center (MIL),The Palace of Auburn Hills (DET),238
+BMO Harris Bradley Center (MIL),Bankers Life Fieldhouse (IND),244
+BMO Harris Bradley Center (MIL),BMO Harris Bradley Center (MIL),0
+BMO Harris Bradley Center (MIL),Philips Arena (ATL),668
+BMO Harris Bradley Center (MIL),Spectrum Center (CHA),659
+BMO Harris Bradley Center (MIL),AmericanAirlines Arena (MIA),1266
+BMO Harris Bradley Center (MIL),Amway Center (ORL),1064
+BMO Harris Bradley Center (MIL),Verizon Center (WSH),636
+BMO Harris Bradley Center (MIL),ORACLE Arena (GS),1833
+BMO Harris Bradley Center (MIL),Staples Center (LAC),1745
+BMO Harris Bradley Center (MIL),Staples Center (LAL),1745
+BMO Harris Bradley Center (MIL),Talking Stick Resort Arena (PHX),1463
+BMO Harris Bradley Center (MIL),Golden 1 Center (SAC),1775
+BMO Harris Bradley Center (MIL),American Airlines Center (DAL),859
+BMO Harris Bradley Center (MIL),Toyota Center (HOU),1004
+BMO Harris Bradley Center (MIL),FedExForum (MEM),556
+BMO Harris Bradley Center (MIL),Smoothie King Center (NO),910
+BMO Harris Bradley Center (MIL),AT&T Center (SA),1105
+BMO Harris Bradley Center (MIL),Pepsi Center (DEN),915
+BMO Harris Bradley Center (MIL),Target Center (MIN),300
+BMO Harris Bradley Center (MIL),Chesapeake Energy Arena (OKC),732
+BMO Harris Bradley Center (MIL),Moda Center at the Rose Quarter (POR),1718
+BMO Harris Bradley Center (MIL),Vivint Smart Home Arena (UTA),1241
+Philips Arena (ATL),TD Garden (BOS),936
+Philips Arena (ATL),Barclays Center (BKN),746
+Philips Arena (ATL),Madison Square Garden (NY),748
+Philips Arena (ATL),Wells Fargo Center (PHI),663
+Philips Arena (ATL),Air Canada Centre (TOR),733
+Philips Arena (ATL),United Center (CHI),588
+Philips Arena (ATL),Quicken Loans Arena (CLE),553
+Philips Arena (ATL),The Palace of Auburn Hills (DET),619
+Philips Arena (ATL),Bankers Life Fieldhouse (IND),425
+Philips Arena (ATL),BMO Harris Bradley Center (MIL),668
+Philips Arena (ATL),Philips Arena (ATL),0
+Philips Arena (ATL),Spectrum Center (CHA),226
+Philips Arena (ATL),AmericanAirlines Arena (MIA),603
+Philips Arena (ATL),Amway Center (ORL),401
+Philips Arena (ATL),Verizon Center (WSH),542
+Philips Arena (ATL),ORACLE Arena (GS),2131
+Philips Arena (ATL),Staples Center (LAC),1937
+Philips Arena (ATL),Staples Center (LAL),1937
+Philips Arena (ATL),Talking Stick Resort Arena (PHX),1591
+Philips Arena (ATL),Golden 1 Center (SAC),2086
+Philips Arena (ATL),American Airlines Center (DAL),731
+Philips Arena (ATL),Toyota Center (HOU),701
+Philips Arena (ATL),FedExForum (MEM),336
+Philips Arena (ATL),Smoothie King Center (NO),424
+Philips Arena (ATL),AT&T Center (SA),879
+Philips Arena (ATL),Pepsi Center (DEN),1212
+Philips Arena (ATL),Target Center (MIN),908
+Philips Arena (ATL),Chesapeake Energy Arena (OKC),756
+Philips Arena (ATL),Moda Center at the Rose Quarter (POR),2172
+Philips Arena (ATL),Vivint Smart Home Arena (UTA),1582
+Spectrum Center (CHA),TD Garden (BOS),720
+Spectrum Center (CHA),Barclays Center (BKN),530
+Spectrum Center (CHA),Madison Square Garden (NY),533
+Spectrum Center (CHA),Wells Fargo Center (PHI),447
+Spectrum Center (CHA),Air Canada Centre (TOR),585
+Spectrum Center (CHA),United Center (CHI),589
+Spectrum Center (CHA),Quicken Loans Arena (CLE),434
+Spectrum Center (CHA),The Palace of Auburn Hills (DET),531
+Spectrum Center (CHA),Bankers Life Fieldhouse (IND),427
+Spectrum Center (CHA),BMO Harris Bradley Center (MIL),659
+Spectrum Center (CHA),Philips Arena (ATL),226
+Spectrum Center (CHA),Spectrum Center (CHA),0
+Spectrum Center (CHA),AmericanAirlines Arena (MIA),651
+Spectrum Center (CHA),Amway Center (ORL),461
+Spectrum Center (CHA),Verizon Center (WSH),329
+Spectrum Center (CHA),ORACLE Arena (GS),2293
+Spectrum Center (CHA),Staples Center (LAC),2121
+Spectrum Center (CHA),Staples Center (LAL),2121
+Spectrum Center (CHA),Talking Stick Resort Arena (PHX),1782
+Spectrum Center (CHA),Golden 1 Center (SAC),2245
+Spectrum Center (CHA),American Airlines Center (DAL),940
+Spectrum Center (CHA),Toyota Center (HOU),926
+Spectrum Center (CHA),FedExForum (MEM),520
+Spectrum Center (CHA),Smoothie King Center (NO),649
+Spectrum Center (CHA),AT&T Center (SA),1102
+Spectrum Center (CHA),Pepsi Center (DEN),1359
+Spectrum Center (CHA),Target Center (MIN),940
+Spectrum Center (CHA),Chesapeake Energy Arena (OKC),940
+Spectrum Center (CHA),Moda Center at the Rose Quarter (POR),2289
+Spectrum Center (CHA),Vivint Smart Home Arena (UTA),1727
+AmericanAirlines Arena (MIA),TD Garden (BOS),1254
+AmericanAirlines Arena (MIA),Barclays Center (BKN),1087
+AmericanAirlines Arena (MIA),Madison Square Garden (NY),1091
+AmericanAirlines Arena (MIA),Wells Fargo Center (PHI),1015
+AmericanAirlines Arena (MIA),Air Canada Centre (TOR),1231
+AmericanAirlines Arena (MIA),United Center (CHI),1188
+AmericanAirlines Arena (MIA),Quicken Loans Arena (CLE),1085
+AmericanAirlines Arena (MIA),The Palace of Auburn Hills (DET),1178
+AmericanAirlines Arena (MIA),Bankers Life Fieldhouse (IND),1022
+AmericanAirlines Arena (MIA),BMO Harris Bradley Center (MIL),1266
+AmericanAirlines Arena (MIA),Philips Arena (ATL),603
+AmericanAirlines Arena (MIA),Spectrum Center (CHA),651
+AmericanAirlines Arena (MIA),AmericanAirlines Arena (MIA),0
+AmericanAirlines Arena (MIA),Amway Center (ORL),202
+AmericanAirlines Arena (MIA),Verizon Center (WSH),922
+AmericanAirlines Arena (MIA),ORACLE Arena (GS),2585
+AmericanAirlines Arena (MIA),Staples Center (LAC),2339
+AmericanAirlines Arena (MIA),Staples Center (LAL),2339
+AmericanAirlines Arena (MIA),Talking Stick Resort Arena (PHX),1980
+AmericanAirlines Arena (MIA),Golden 1 Center (SAC),2550
+AmericanAirlines Arena (MIA),American Airlines Center (DAL),1121
+AmericanAirlines Arena (MIA),Toyota Center (HOU),967
+AmericanAirlines Arena (MIA),FedExForum (MEM),871
+AmericanAirlines Arena (MIA),Smoothie King Center (NO),668
+AmericanAirlines Arena (MIA),AT&T Center (SA),1144
+AmericanAirlines Arena (MIA),Pepsi Center (DEN),1725
+AmericanAirlines Arena (MIA),Target Center (MIN),1511
+AmericanAirlines Arena (MIA),Chesapeake Energy Arena (OKC),1225
+AmericanAirlines Arena (MIA),Moda Center at the Rose Quarter (POR),2706
+AmericanAirlines Arena (MIA),Vivint Smart Home Arena (UTA),2087
+Amway Center (ORL),TD Garden (BOS),1114
+Amway Center (ORL),Barclays Center (BKN),936
+Amway Center (ORL),Madison Square Garden (NY),940
+Amway Center (ORL),Wells Fargo Center (PHI),859
+Amway Center (ORL),Air Canada Centre (TOR),1047
+Amway Center (ORL),United Center (CHI),985
+Amway Center (ORL),Quicken Loans Arena (CLE),893
+Amway Center (ORL),The Palace of Auburn Hills (DET),981
+Amway Center (ORL),Bankers Life Fieldhouse (IND),820
+Amway Center (ORL),BMO Harris Bradley Center (MIL),1064
+Amway Center (ORL),Philips Arena (ATL),401
+Amway Center (ORL),Spectrum Center (CHA),461
+Amway Center (ORL),AmericanAirlines Arena (MIA),202
+Amway Center (ORL),Amway Center (ORL),0
+Amway Center (ORL),Verizon Center (WSH),756
+Amway Center (ORL),ORACLE Arena (GS),2433
+Amway Center (ORL),Staples Center (LAC),2202
+Amway Center (ORL),Staples Center (LAL),2202
+Amway Center (ORL),Talking Stick Resort Arena (PHX),1845
+Amway Center (ORL),Golden 1 Center (SAC),2395
+Amway Center (ORL),American Airlines Center (DAL),974
+Amway Center (ORL),Toyota Center (HOU),849
+Amway Center (ORL),FedExForum (MEM),683
+Amway Center (ORL),Smoothie King Center (NO),533
+Amway Center (ORL),AT&T Center (SA),1033
+Amway Center (ORL),Pepsi Center (DEN),1552
+Amway Center (ORL),Target Center (MIN),1309
+Amway Center (ORL),Chesapeake Energy Arena (OKC),1059
+Amway Center (ORL),Moda Center at the Rose Quarter (POR),2529
+Amway Center (ORL),Vivint Smart Home Arena (UTA),1918
+Verizon Center (WSH),TD Garden (BOS),393
+Verizon Center (WSH),Barclays Center (BKN),203
+Verizon Center (WSH),Madison Square Garden (NY),205
+Verizon Center (WSH),Wells Fargo Center (PHI),120
+Verizon Center (WSH),Air Canada Centre (TOR),349
+Verizon Center (WSH),United Center (CHI),598
+Verizon Center (WSH),Quicken Loans Arena (CLE),305
+Verizon Center (WSH),The Palace of Auburn Hills (DET),418
+Verizon Center (WSH),Bankers Life Fieldhouse (IND),492
+Verizon Center (WSH),BMO Harris Bradley Center (MIL),636
+Verizon Center (WSH),Philips Arena (ATL),542
+Verizon Center (WSH),Spectrum Center (CHA),329
+Verizon Center (WSH),AmericanAirlines Arena (MIA),922
+Verizon Center (WSH),Amway Center (ORL),756
+Verizon Center (WSH),Verizon Center (WSH),0
+Verizon Center (WSH),ORACLE Arena (GS),2433
+Verizon Center (WSH),Staples Center (LAC),2301
+Verizon Center (WSH),Staples Center (LAL),2301
+Verizon Center (WSH),Talking Stick Resort Arena (PHX),1982
+Verizon Center (WSH),Golden 1 Center (SAC),2378
+Verizon Center (WSH),American Airlines Center (DAL),1192
+Verizon Center (WSH),Toyota Center (HOU),1220
+Verizon Center (WSH),FedExForum (MEM),764
+Verizon Center (WSH),Smoothie King Center (NO),965
+Verizon Center (WSH),AT&T Center (SA),1384
+Verizon Center (WSH),Pepsi Center (DEN),1494
+Verizon Center (WSH),Target Center (MIN),936
+Verizon Center (WSH),Chesapeake Energy Arena (OKC),1152
+Verizon Center (WSH),Moda Center at the Rose Quarter (POR),2353
+Verizon Center (WSH),Vivint Smart Home Arena (UTA),1847
+ORACLE Arena (GS),TD Garden (BOS),2691
+ORACLE Arena (GS),Barclays Center (BKN),2565
+ORACLE Arena (GS),Madison Square Garden (NY),2563
+ORACLE Arena (GS),Wells Fargo Center (PHI),2514
+ORACLE Arena (GS),Air Canada Centre (TOR),2261
+ORACLE Arena (GS),United Center (CHI),1848
+ORACLE Arena (GS),Quicken Loans Arena (CLE),2159
+ORACLE Arena (GS),The Palace of Auburn Hills (DET),2071
+ORACLE Arena (GS),Bankers Life Fieldhouse (IND),1941
+ORACLE Arena (GS),BMO Harris Bradley Center (MIL),1833
+ORACLE Arena (GS),Philips Arena (ATL),2131
+ORACLE Arena (GS),Spectrum Center (CHA),2293
+ORACLE Arena (GS),AmericanAirlines Arena (MIA),2585
+ORACLE Arena (GS),Amway Center (ORL),2433
+ORACLE Arena (GS),Verizon Center (WSH),2433
+ORACLE Arena (GS),ORACLE Arena (GS),0
+ORACLE Arena (GS),Staples Center (LAC),343
+ORACLE Arena (GS),Staples Center (LAL),343
+ORACLE Arena (GS),Talking Stick Resort Arena (PHX),647
+ORACLE Arena (GS),Golden 1 Center (SAC),68
+ORACLE Arena (GS),American Airlines Center (DAL),1463
+ORACLE Arena (GS),Toyota Center (HOU),1637
+ORACLE Arena (GS),FedExForum (MEM),1794
+ORACLE Arena (GS),Smoothie King Center (NO),1917
+ORACLE Arena (GS),AT&T Center (SA),1485
+ORACLE Arena (GS),Pepsi Center (DEN),940
+ORACLE Arena (GS),Target Center (MIN),1573
+ORACLE Arena (GS),Chesapeake Energy Arena (OKC),1380
+ORACLE Arena (GS),Moda Center at the Rose Quarter (POR),533
+ORACLE Arena (GS),Vivint Smart Home Arena (UTA),592
+Staples Center (LAC),TD Garden (BOS),2598
+Staples Center (LAC),Barclays Center (BKN),2453
+Staples Center (LAC),Madison Square Garden (NY),2452
+Staples Center (LAC),Wells Fargo Center (PHI),2394
+Staples Center (LAC),Air Canada Centre (TOR),2177
+Staples Center (LAC),United Center (CHI),1745
+Staples Center (LAC),Quicken Loans Arena (CLE),2050
+Staples Center (LAC),The Palace of Auburn Hills (DET),1977
+Staples Center (LAC),Bankers Life Fieldhouse (IND),1811
+Staples Center (LAC),BMO Harris Bradley Center (MIL),1745
+Staples Center (LAC),Philips Arena (ATL),1937
+Staples Center (LAC),Spectrum Center (CHA),2121
+Staples Center (LAC),AmericanAirlines Arena (MIA),2339
+Staples Center (LAC),Amway Center (ORL),2202
+Staples Center (LAC),Verizon Center (WSH),2301
+Staples Center (LAC),ORACLE Arena (GS),343
+Staples Center (LAC),Staples Center (LAC),0
+Staples Center (LAC),Staples Center (LAL),0
+Staples Center (LAC),Talking Stick Resort Arena (PHX),358
+Staples Center (LAC),Golden 1 Center (SAC),361
+Staples Center (LAC),American Airlines Center (DAL),1229
+Staples Center (LAC),Toyota Center (HOU),1374
+Staples Center (LAC),FedExForum (MEM),1604
+Staples Center (LAC),Smoothie King Center (NO),1673
+Staples Center (LAC),AT&T Center (SA),1207
+Staples Center (LAC),Pepsi Center (DEN),831
+Staples Center (LAC),Target Center (MIN),1522
+Staples Center (LAC),Chesapeake Energy Arena (OKC),1182
+Staples Center (LAC),Moda Center at the Rose Quarter (POR),825
+Staples Center (LAC),Vivint Smart Home Arena (UTA),580
+Staples Center (LAL),TD Garden (BOS),2598
+Staples Center (LAL),Barclays Center (BKN),2453
+Staples Center (LAL),Madison Square Garden (NY),2452
+Staples Center (LAL),Wells Fargo Center (PHI),2394
+Staples Center (LAL),Air Canada Centre (TOR),2177
+Staples Center (LAL),United Center (CHI),1745
+Staples Center (LAL),Quicken Loans Arena (CLE),2050
+Staples Center (LAL),The Palace of Auburn Hills (DET),1977
+Staples Center (LAL),Bankers Life Fieldhouse (IND),1811
+Staples Center (LAL),BMO Harris Bradley Center (MIL),1745
+Staples Center (LAL),Philips Arena (ATL),1937
+Staples Center (LAL),Spectrum Center (CHA),2121
+Staples Center (LAL),AmericanAirlines Arena (MIA),2339
+Staples Center (LAL),Amway Center (ORL),2202
+Staples Center (LAL),Verizon Center (WSH),2301
+Staples Center (LAL),ORACLE Arena (GS),343
+Staples Center (LAL),Staples Center (LAC),0
+Staples Center (LAL),Staples Center (LAL),0
+Staples Center (LAL),Talking Stick Resort Arena (PHX),358
+Staples Center (LAL),Golden 1 Center (SAC),361
+Staples Center (LAL),American Airlines Center (DAL),1229
+Staples Center (LAL),Toyota Center (HOU),1374
+Staples Center (LAL),FedExForum (MEM),1604
+Staples Center (LAL),Smoothie King Center (NO),1673
+Staples Center (LAL),AT&T Center (SA),1207
+Staples Center (LAL),Pepsi Center (DEN),831
+Staples Center (LAL),Target Center (MIN),1522
+Staples Center (LAL),Chesapeake Energy Arena (OKC),1182
+Staples Center (LAL),Moda Center at the Rose Quarter (POR),825
+Staples Center (LAL),Vivint Smart Home Arena (UTA),580
+Talking Stick Resort Arena (PHX),TD Garden (BOS),2299
+Talking Stick Resort Arena (PHX),Barclays Center (BKN),2145
+Talking Stick Resort Arena (PHX),Madison Square Garden (NY),2145
+Talking Stick Resort Arena (PHX),Wells Fargo Center (PHI),2081
+Talking Stick Resort Arena (PHX),Air Canada Centre (TOR),1890
+Talking Stick Resort Arena (PHX),United Center (CHI),1452
+Talking Stick Resort Arena (PHX),Quicken Loans Arena (CLE),1749
+Talking Stick Resort Arena (PHX),The Palace of Auburn Hills (DET),1685
+Talking Stick Resort Arena (PHX),Bankers Life Fieldhouse (IND),1499
+Talking Stick Resort Arena (PHX),BMO Harris Bradley Center (MIL),1463
+Talking Stick Resort Arena (PHX),Philips Arena (ATL),1591
+Talking Stick Resort Arena (PHX),Spectrum Center (CHA),1782
+Talking Stick Resort Arena (PHX),AmericanAirlines Arena (MIA),1980
+Talking Stick Resort Arena (PHX),Amway Center (ORL),1845
+Talking Stick Resort Arena (PHX),Verizon Center (WSH),1982
+Talking Stick Resort Arena (PHX),ORACLE Arena (GS),647
+Talking Stick Resort Arena (PHX),Staples Center (LAC),358
+Talking Stick Resort Arena (PHX),Staples Center (LAL),358
+Talking Stick Resort Arena (PHX),Talking Stick Resort Arena (PHX),0
+Talking Stick Resort Arena (PHX),Golden 1 Center (SAC),635
+Talking Stick Resort Arena (PHX),American Airlines Center (DAL),874
+Talking Stick Resort Arena (PHX),Toyota Center (HOU),1015
+Talking Stick Resort Arena (PHX),FedExForum (MEM),1262
+Talking Stick Resort Arena (PHX),Smoothie King Center (NO),1315
+Talking Stick Resort Arena (PHX),AT&T Center (SA),851
+Talking Stick Resort Arena (PHX),Pepsi Center (DEN),585
+Talking Stick Resort Arena (PHX),Target Center (MIN),1276
+Talking Stick Resort Arena (PHX),Chesapeake Energy Arena (OKC),841
+Talking Stick Resort Arena (PHX),Moda Center at the Rose Quarter (POR),1005
+Talking Stick Resort Arena (PHX),Vivint Smart Home Arena (UTA),504
+Golden 1 Center (SAC),TD Garden (BOS),2631
+Golden 1 Center (SAC),Barclays Center (BKN),2508
+Golden 1 Center (SAC),Madison Square Garden (NY),2506
+Golden 1 Center (SAC),Wells Fargo Center (PHI),2458
+Golden 1 Center (SAC),Air Canada Centre (TOR),2201
+Golden 1 Center (SAC),United Center (CHI),1791
+Golden 1 Center (SAC),Quicken Loans Arena (CLE),2102
+Golden 1 Center (SAC),The Palace of Auburn Hills (DET),2013
+Golden 1 Center (SAC),Bankers Life Fieldhouse (IND),1887
+Golden 1 Center (SAC),BMO Harris Bradley Center (MIL),1775
+Golden 1 Center (SAC),Philips Arena (ATL),2086
+Golden 1 Center (SAC),Spectrum Center (CHA),2245
+Golden 1 Center (SAC),AmericanAirlines Arena (MIA),2550
+Golden 1 Center (SAC),Amway Center (ORL),2395
+Golden 1 Center (SAC),Verizon Center (WSH),2378
+Golden 1 Center (SAC),ORACLE Arena (GS),68
+Golden 1 Center (SAC),Staples Center (LAC),361
+Golden 1 Center (SAC),Staples Center (LAL),361
+Golden 1 Center (SAC),Talking Stick Resort Arena (PHX),635
+Golden 1 Center (SAC),Golden 1 Center (SAC),0
+Golden 1 Center (SAC),American Airlines Center (DAL),1428
+Golden 1 Center (SAC),Toyota Center (HOU),1608
+Golden 1 Center (SAC),FedExForum (MEM),1749
+Golden 1 Center (SAC),Smoothie King Center (NO),1883
+Golden 1 Center (SAC),AT&T Center (SA),1460
+Golden 1 Center (SAC),Pepsi Center (DEN),887
+Golden 1 Center (SAC),Target Center (MIN),1512
+Golden 1 Center (SAC),Chesapeake Energy Arena (OKC),1339
+Golden 1 Center (SAC),Moda Center at the Rose Quarter (POR),482
+Golden 1 Center (SAC),Vivint Smart Home Arena (UTA),533
+American Airlines Center (DAL),TD Garden (BOS),1558
+American Airlines Center (DAL),Barclays Center (BKN),1381
+American Airlines Center (DAL),Madison Square Garden (NY),1381
+American Airlines Center (DAL),Wells Fargo Center (PHI),1306
+American Airlines Center (DAL),Air Canada Centre (TOR),1209
+American Airlines Center (DAL),United Center (CHI),806
+American Airlines Center (DAL),Quicken Loans Arena (CLE),1031
+American Airlines Center (DAL),The Palace of Auburn Hills (DET),1011
+American Airlines Center (DAL),Bankers Life Fieldhouse (IND),769
+American Airlines Center (DAL),BMO Harris Bradley Center (MIL),859
+American Airlines Center (DAL),Philips Arena (ATL),731
+American Airlines Center (DAL),Spectrum Center (CHA),940
+American Airlines Center (DAL),AmericanAirlines Arena (MIA),1121
+American Airlines Center (DAL),Amway Center (ORL),974
+American Airlines Center (DAL),Verizon Center (WSH),1192
+American Airlines Center (DAL),ORACLE Arena (GS),1463
+American Airlines Center (DAL),Staples Center (LAC),1229
+American Airlines Center (DAL),Staples Center (LAL),1229
+American Airlines Center (DAL),Talking Stick Resort Arena (PHX),874
+American Airlines Center (DAL),Golden 1 Center (SAC),1428
+American Airlines Center (DAL),American Airlines Center (DAL),0
+American Airlines Center (DAL),Toyota Center (HOU),232
+American Airlines Center (DAL),FedExForum (MEM),429
+American Airlines Center (DAL),Smoothie King Center (NO),454
+American Airlines Center (DAL),AT&T Center (SA),250
+American Airlines Center (DAL),Pepsi Center (DEN),652
+American Airlines Center (DAL),Target Center (MIN),859
+American Airlines Center (DAL),Chesapeake Energy Arena (OKC),183
+American Airlines Center (DAL),Moda Center at the Rose Quarter (POR),1621
+American Airlines Center (DAL),Vivint Smart Home Arena (UTA),988
+Toyota Center (HOU),TD Garden (BOS),1605
+Toyota Center (HOU),Barclays Center (BKN),1419
+Toyota Center (HOU),Madison Square Garden (NY),1420
+Toyota Center (HOU),Wells Fargo Center (PHI),1339
+Toyota Center (HOU),Air Canada Centre (TOR),1301
+Toyota Center (HOU),United Center (CHI),939
+Toyota Center (HOU),Quicken Loans Arena (CLE),1114
+Toyota Center (HOU),The Palace of Auburn Hills (DET),1117
+Toyota Center (HOU),Bankers Life Fieldhouse (IND),865
+Toyota Center (HOU),BMO Harris Bradley Center (MIL),1004
+Toyota Center (HOU),Philips Arena (ATL),701
+Toyota Center (HOU),Spectrum Center (CHA),926
+Toyota Center (HOU),AmericanAirlines Arena (MIA),967
+Toyota Center (HOU),Amway Center (ORL),849
+Toyota Center (HOU),Verizon Center (WSH),1220
+Toyota Center (HOU),ORACLE Arena (GS),1637
+Toyota Center (HOU),Staples Center (LAC),1374
+Toyota Center (HOU),Staples Center (LAL),1374
+Toyota Center (HOU),Talking Stick Resort Arena (PHX),1015
+Toyota Center (HOU),Golden 1 Center (SAC),1608
+Toyota Center (HOU),American Airlines Center (DAL),232
+Toyota Center (HOU),Toyota Center (HOU),0
+Toyota Center (HOU),FedExForum (MEM),484
+Toyota Center (HOU),Smoothie King Center (NO),318
+Toyota Center (HOU),AT&T Center (SA),186
+Toyota Center (HOU),Pepsi Center (DEN),879
+Toyota Center (HOU),Target Center (MIN),1054
+Toyota Center (HOU),Chesapeake Energy Arena (OKC),412
+Toyota Center (HOU),Moda Center at the Rose Quarter (POR),1835
+Toyota Center (HOU),Vivint Smart Home Arena (UTA),1199
+FedExForum (MEM),TD Garden (BOS),1136
+FedExForum (MEM),Barclays Center (BKN),955
+FedExForum (MEM),Madison Square Garden (NY),956
+FedExForum (MEM),Wells Fargo Center (PHI),879
+FedExForum (MEM),Air Canada Centre (TOR),816
+FedExForum (MEM),United Center (CHI),481
+FedExForum (MEM),Quicken Loans Arena (CLE),630
+FedExForum (MEM),The Palace of Auburn Hills (DET),636
+FedExForum (MEM),Bankers Life Fieldhouse (IND),383
+FedExForum (MEM),BMO Harris Bradley Center (MIL),556
+FedExForum (MEM),Philips Arena (ATL),336
+FedExForum (MEM),Spectrum Center (CHA),520
+FedExForum (MEM),AmericanAirlines Arena (MIA),871
+FedExForum (MEM),Amway Center (ORL),683
+FedExForum (MEM),Verizon Center (WSH),764
+FedExForum (MEM),ORACLE Arena (GS),1794
+FedExForum (MEM),Staples Center (LAC),1604
+FedExForum (MEM),Staples Center (LAL),1604
+FedExForum (MEM),Talking Stick Resort Arena (PHX),1262
+FedExForum (MEM),Golden 1 Center (SAC),1749
+FedExForum (MEM),American Airlines Center (DAL),429
+FedExForum (MEM),Toyota Center (HOU),484
+FedExForum (MEM),FedExForum (MEM),0
+FedExForum (MEM),Smoothie King Center (NO),358
+FedExForum (MEM),AT&T Center (SA),629
+FedExForum (MEM),Pepsi Center (DEN),880
+FedExForum (MEM),Target Center (MIN),699
+FedExForum (MEM),Chesapeake Energy Arena (OKC),422
+FedExForum (MEM),Moda Center at the Rose Quarter (POR),1849
+FedExForum (MEM),Vivint Smart Home Arena (UTA),1250
+Smoothie King Center (NO),TD Garden (BOS),1358
+Smoothie King Center (NO),Barclays Center (BKN),1168
+Smoothie King Center (NO),Madison Square Garden (NY),1170
+Smoothie King Center (NO),Wells Fargo Center (PHI),1086
+Smoothie King Center (NO),Air Canada Centre (TOR),1112
+Smoothie King Center (NO),United Center (CHI),833
+Smoothie King Center (NO),Quicken Loans Arena (CLE),923
+Smoothie King Center (NO),The Palace of Auburn Hills (DET),956
+Smoothie King Center (NO),Bankers Life Fieldhouse (IND),711
+Smoothie King Center (NO),BMO Harris Bradley Center (MIL),910
+Smoothie King Center (NO),Philips Arena (ATL),424
+Smoothie King Center (NO),Spectrum Center (CHA),649
+Smoothie King Center (NO),AmericanAirlines Arena (MIA),668
+Smoothie King Center (NO),Amway Center (ORL),533
+Smoothie King Center (NO),Verizon Center (WSH),965
+Smoothie King Center (NO),ORACLE Arena (GS),1917
+Smoothie King Center (NO),Staples Center (LAC),1673
+Smoothie King Center (NO),Staples Center (LAL),1673
+Smoothie King Center (NO),Talking Stick Resort Arena (PHX),1315
+Smoothie King Center (NO),Golden 1 Center (SAC),1883
+Smoothie King Center (NO),American Airlines Center (DAL),454
+Smoothie King Center (NO),Toyota Center (HOU),318
+Smoothie King Center (NO),FedExForum (MEM),358
+Smoothie King Center (NO),Smoothie King Center (NO),0
+Smoothie King Center (NO),AT&T Center (SA),504
+Smoothie King Center (NO),Pepsi Center (DEN),1082
+Smoothie King Center (NO),Target Center (MIN),1050
+Smoothie King Center (NO),Chesapeake Energy Arena (OKC),576
+Smoothie King Center (NO),Moda Center at the Rose Quarter (POR),2062
+Smoothie King Center (NO),Vivint Smart Home Arena (UTA),1434
+AT&T Center (SA),TD Garden (BOS),1764
+AT&T Center (SA),Barclays Center (BKN),1580
+AT&T Center (SA),Madison Square Garden (NY),1581
+AT&T Center (SA),Wells Fargo Center (PHI),1502
+AT&T Center (SA),Air Canada Centre (TOR),1437
+AT&T Center (SA),United Center (CHI),1048
+AT&T Center (SA),Quicken Loans Arena (CLE),1254
+AT&T Center (SA),The Palace of Auburn Hills (DET),1245
+AT&T Center (SA),Bankers Life Fieldhouse (IND),996
+AT&T Center (SA),BMO Harris Bradley Center (MIL),1105
+AT&T Center (SA),Philips Arena (ATL),879
+AT&T Center (SA),Spectrum Center (CHA),1102
+AT&T Center (SA),AmericanAirlines Arena (MIA),1144
+AT&T Center (SA),Amway Center (ORL),1033
+AT&T Center (SA),Verizon Center (WSH),1384
+AT&T Center (SA),ORACLE Arena (GS),1485
+AT&T Center (SA),Staples Center (LAC),1207
+AT&T Center (SA),Staples Center (LAL),1207
+AT&T Center (SA),Talking Stick Resort Arena (PHX),851
+AT&T Center (SA),Golden 1 Center (SAC),1460
+AT&T Center (SA),American Airlines Center (DAL),250
+AT&T Center (SA),Toyota Center (HOU),186
+AT&T Center (SA),FedExForum (MEM),629
+AT&T Center (SA),Smoothie King Center (NO),504
+AT&T Center (SA),AT&T Center (SA),0
+AT&T Center (SA),Pepsi Center (DEN),803
+AT&T Center (SA),Target Center (MIN),1107
+AT&T Center (SA),Chesapeake Energy Arena (OKC),419
+AT&T Center (SA),Moda Center at the Rose Quarter (POR),1721
+AT&T Center (SA),Vivint Smart Home Arena (UTA),1088
+Pepsi Center (DEN),TD Garden (BOS),1770
+Pepsi Center (DEN),Barclays Center (BKN),1634
+Pepsi Center (DEN),Madison Square Garden (NY),1632
+Pepsi Center (DEN),Wells Fargo Center (PHI),1579
+Pepsi Center (DEN),Air Canada Centre (TOR),1347
+Pepsi Center (DEN),United Center (CHI),919
+Pepsi Center (DEN),Quicken Loans Arena (CLE),1228
+Pepsi Center (DEN),The Palace of Auburn Hills (DET),1148
+Pepsi Center (DEN),Bankers Life Fieldhouse (IND),1002
+Pepsi Center (DEN),BMO Harris Bradley Center (MIL),915
+Pepsi Center (DEN),Philips Arena (ATL),1212
+Pepsi Center (DEN),Spectrum Center (CHA),1359
+Pepsi Center (DEN),AmericanAirlines Arena (MIA),1725
+Pepsi Center (DEN),Amway Center (ORL),1552
+Pepsi Center (DEN),Verizon Center (WSH),1494
+Pepsi Center (DEN),ORACLE Arena (GS),940
+Pepsi Center (DEN),Staples Center (LAC),831
+Pepsi Center (DEN),Staples Center (LAL),831
+Pepsi Center (DEN),Talking Stick Resort Arena (PHX),585
+Pepsi Center (DEN),Golden 1 Center (SAC),887
+Pepsi Center (DEN),American Airlines Center (DAL),652
+Pepsi Center (DEN),Toyota Center (HOU),879
+Pepsi Center (DEN),FedExForum (MEM),880
+Pepsi Center (DEN),Smoothie King Center (NO),1082
+Pepsi Center (DEN),AT&T Center (SA),803
+Pepsi Center (DEN),Pepsi Center (DEN),0
+Pepsi Center (DEN),Target Center (MIN),697
+Pepsi Center (DEN),Chesapeake Energy Arena (OKC),505
+Pepsi Center (DEN),Moda Center at the Rose Quarter (POR),981
+Pepsi Center (DEN),Vivint Smart Home Arena (UTA),370
+Target Center (MIN),TD Garden (BOS),1126
+Target Center (MIN),Barclays Center (BKN),1023
+Target Center (MIN),Madison Square Garden (NY),1021
+Target Center (MIN),Wells Fargo Center (PHI),989
+Target Center (MIN),Air Canada Centre (TOR),696
+Target Center (MIN),United Center (CHI),355
+Target Center (MIN),Quicken Loans Arena (CLE),633
+Target Center (MIN),The Palace of Auburn Hills (DET),527
+Target Center (MIN),Bankers Life Fieldhouse (IND),513
+Target Center (MIN),BMO Harris Bradley Center (MIL),300
+Target Center (MIN),Philips Arena (ATL),908
+Target Center (MIN),Spectrum Center (CHA),940
+Target Center (MIN),AmericanAirlines Arena (MIA),1511
+Target Center (MIN),Amway Center (ORL),1309
+Target Center (MIN),Verizon Center (WSH),936
+Target Center (MIN),ORACLE Arena (GS),1573
+Target Center (MIN),Staples Center (LAC),1522
+Target Center (MIN),Staples Center (LAL),1522
+Target Center (MIN),Talking Stick Resort Arena (PHX),1276
+Target Center (MIN),Golden 1 Center (SAC),1512
+Target Center (MIN),American Airlines Center (DAL),859
+Target Center (MIN),Toyota Center (HOU),1054
+Target Center (MIN),FedExForum (MEM),699
+Target Center (MIN),Smoothie King Center (NO),1050
+Target Center (MIN),AT&T Center (SA),1107
+Target Center (MIN),Pepsi Center (DEN),697
+Target Center (MIN),Target Center (MIN),0
+Target Center (MIN),Chesapeake Energy Arena (OKC),691
+Target Center (MIN),Moda Center at the Rose Quarter (POR),1424
+Target Center (MIN),Vivint Smart Home Arena (UTA),983
+Chesapeake Energy Arena (OKC),TD Garden (BOS),1495
+Chesapeake Energy Arena (OKC),Barclays Center (BKN),1328
+Chesapeake Energy Arena (OKC),Madison Square Garden (NY),1328
+Chesapeake Energy Arena (OKC),Wells Fargo Center (PHI),1258
+Chesapeake Energy Arena (OKC),Air Canada Centre (TOR),1117
+Chesapeake Energy Arena (OKC),United Center (CHI),691
+Chesapeake Energy Arena (OKC),Quicken Loans Arena (CLE),951
+Chesapeake Energy Arena (OKC),The Palace of Auburn Hills (DET),913
+Chesapeake Energy Arena (OKC),Bankers Life Fieldhouse (IND),689
+Chesapeake Energy Arena (OKC),BMO Harris Bradley Center (MIL),732
+Chesapeake Energy Arena (OKC),Philips Arena (ATL),756
+Chesapeake Energy Arena (OKC),Spectrum Center (CHA),940
+Chesapeake Energy Arena (OKC),AmericanAirlines Arena (MIA),1225
+Chesapeake Energy Arena (OKC),Amway Center (ORL),1059
+Chesapeake Energy Arena (OKC),Verizon Center (WSH),1152
+Chesapeake Energy Arena (OKC),ORACLE Arena (GS),1380
+Chesapeake Energy Arena (OKC),Staples Center (LAC),1182
+Chesapeake Energy Arena (OKC),Staples Center (LAL),1182
+Chesapeake Energy Arena (OKC),Talking Stick Resort Arena (PHX),841
+Chesapeake Energy Arena (OKC),Golden 1 Center (SAC),1339
+Chesapeake Energy Arena (OKC),American Airlines Center (DAL),183
+Chesapeake Energy Arena (OKC),Toyota Center (HOU),412
+Chesapeake Energy Arena (OKC),FedExForum (MEM),422
+Chesapeake Energy Arena (OKC),Smoothie King Center (NO),576
+Chesapeake Energy Arena (OKC),AT&T Center (SA),419
+Chesapeake Energy Arena (OKC),Pepsi Center (DEN),505
+Chesapeake Energy Arena (OKC),Target Center (MIN),691
+Chesapeake Energy Arena (OKC),Chesapeake Energy Arena (OKC),0
+Chesapeake Energy Arena (OKC),Moda Center at the Rose Quarter (POR),1487
+Chesapeake Energy Arena (OKC),Vivint Smart Home Arena (UTA),862
+Moda Center at the Rose Quarter (POR),TD Garden (BOS),2539
+Moda Center at the Rose Quarter (POR),Barclays Center (BKN),2447
+Moda Center at the Rose Quarter (POR),Madison Square Garden (NY),2444
+Moda Center at the Rose Quarter (POR),Wells Fargo Center (PHI),2413
+Moda Center at the Rose Quarter (POR),Air Canada Centre (TOR),2114
+Moda Center at the Rose Quarter (POR),United Center (CHI),1756
+Moda Center at the Rose Quarter (POR),Quicken Loans Arena (CLE),2055
+Moda Center at the Rose Quarter (POR),The Palace of Auburn Hills (DET),1951
+Moda Center at the Rose Quarter (POR),Bankers Life Fieldhouse (IND),1885
+Moda Center at the Rose Quarter (POR),BMO Harris Bradley Center (MIL),1718
+Moda Center at the Rose Quarter (POR),Philips Arena (ATL),2172
+Moda Center at the Rose Quarter (POR),Spectrum Center (CHA),2289
+Moda Center at the Rose Quarter (POR),AmericanAirlines Arena (MIA),2706
+Moda Center at the Rose Quarter (POR),Amway Center (ORL),2529
+Moda Center at the Rose Quarter (POR),Verizon Center (WSH),2353
+Moda Center at the Rose Quarter (POR),ORACLE Arena (GS),533
+Moda Center at the Rose Quarter (POR),Staples Center (LAC),825
+Moda Center at the Rose Quarter (POR),Staples Center (LAL),825
+Moda Center at the Rose Quarter (POR),Talking Stick Resort Arena (PHX),1005
+Moda Center at the Rose Quarter (POR),Golden 1 Center (SAC),482
+Moda Center at the Rose Quarter (POR),American Airlines Center (DAL),1621
+Moda Center at the Rose Quarter (POR),Toyota Center (HOU),1835
+Moda Center at the Rose Quarter (POR),FedExForum (MEM),1849
+Moda Center at the Rose Quarter (POR),Smoothie King Center (NO),2062
+Moda Center at the Rose Quarter (POR),AT&T Center (SA),1721
+Moda Center at the Rose Quarter (POR),Pepsi Center (DEN),981
+Moda Center at the Rose Quarter (POR),Target Center (MIN),1424
+Moda Center at the Rose Quarter (POR),Chesapeake Energy Arena (OKC),1487
+Moda Center at the Rose Quarter (POR),Moda Center at the Rose Quarter (POR),0
+Moda Center at the Rose Quarter (POR),Vivint Smart Home Arena (UTA),635
+Vivint Smart Home Arena (UTA),TD Garden (BOS),2098
+Vivint Smart Home Arena (UTA),Barclays Center (BKN),1974
+Vivint Smart Home Arena (UTA),Madison Square Garden (NY),1972
+Vivint Smart Home Arena (UTA),Wells Fargo Center (PHI),1925
+Vivint Smart Home Arena (UTA),Air Canada Centre (TOR),1669
+Vivint Smart Home Arena (UTA),United Center (CHI),1258
+Vivint Smart Home Arena (UTA),Quicken Loans Arena (CLE),1568
+Vivint Smart Home Arena (UTA),The Palace of Auburn Hills (DET),1479
+Vivint Smart Home Arena (UTA),Bankers Life Fieldhouse (IND),1357
+Vivint Smart Home Arena (UTA),BMO Harris Bradley Center (MIL),1241
+Vivint Smart Home Arena (UTA),Philips Arena (ATL),1582
+Vivint Smart Home Arena (UTA),Spectrum Center (CHA),1727
+Vivint Smart Home Arena (UTA),AmericanAirlines Arena (MIA),2087
+Vivint Smart Home Arena (UTA),Amway Center (ORL),1918
+Vivint Smart Home Arena (UTA),Verizon Center (WSH),1847
+Vivint Smart Home Arena (UTA),ORACLE Arena (GS),592
+Vivint Smart Home Arena (UTA),Staples Center (LAC),580
+Vivint Smart Home Arena (UTA),Staples Center (LAL),580
+Vivint Smart Home Arena (UTA),Talking Stick Resort Arena (PHX),504
+Vivint Smart Home Arena (UTA),Golden 1 Center (SAC),533
+Vivint Smart Home Arena (UTA),American Airlines Center (DAL),988
+Vivint Smart Home Arena (UTA),Toyota Center (HOU),1199
+Vivint Smart Home Arena (UTA),FedExForum (MEM),1250
+Vivint Smart Home Arena (UTA),Smoothie King Center (NO),1434
+Vivint Smart Home Arena (UTA),AT&T Center (SA),1088
+Vivint Smart Home Arena (UTA),Pepsi Center (DEN),370
+Vivint Smart Home Arena (UTA),Target Center (MIN),983
+Vivint Smart Home Arena (UTA),Chesapeake Energy Arena (OKC),862
+Vivint Smart Home Arena (UTA),Moda Center at the Rose Quarter (POR),635
+Vivint Smart Home Arena (UTA),Vivint Smart Home Arena (UTA),0

@@ -1,0 +1,516 @@
+---
+title: "The Impact of Scheduling on NBA Team Performance"
+author:
+- "Author: Zachary P. Malosh^[University of Cincinnati - Masters Candidate, Fox Sports - Predictions Team Lead (zachary.malosh@foxsports.com)]"
+- "Reader: Michael Magazine, PhD ^[University of Cincinnati - Professor and Ohio Eminent Scholar]"
+- "Reader: Tom Zentmeyer, MBA^[Fox Sports - Vice President of Technology]"
+date: "`r format(Sys.time(), '%Y %B %d')`"
+abstract: "Every year, the NBA releases their league schedule for the coming year. The construction of the schedule contains many potential schedule-based factors (such as rest, travel, and home court) that can impact each game. Understanding the impact of these factors is possible by creating a regression model that quantifies the team performance in a particular game in terms of final score and fouls committed. Ultimately, rest, distance, attendance, and time in the season had direct impact on the final score of the game while the attendance at a game led to an advantage in fouls called against the home team. The quantification of the impact of these factors can be used to anticipate variations in performance to improve accuracy in a Monte Carlo simulation."
+output:
+  pdf_document:
+    fig_height: 3.5
+    toc: no
+    toc_depth: 2
+  html_document:
+    fig_height: 3.5
+    fig_width: 6
+    toc: yes
+    toc_depth: 3
+  word_document:
+    fig_height: 3.5
+    toc: yes
+    toc_depth: 2
+editor_options: 
+  chunk_output_type: console
+---
+\newpage
+\tableofcontents
+\newpage
+```{r 'setup', echo = FALSE, warning = FALSE, message = FALSE}
+library(corrplot)
+library(ggplot2)
+library(gridExtra)
+library(leaps)
+library(knitr)
+library(plyr)
+library(reshape)
+
+allowCache = FALSE
+
+pValDigits <- 4
+pastGameWindow <- 4
+minSeason <- 2005
+maxSeason <- 2016
+corrPlotCexSize <- 4
+stepEntryPVal <- 0.01
+stepEntryVal <- qchisq(stepEntryPVal, 1, lower.tail = FALSE)
+
+nba.games <- read.csv('NbaGames.csv', header = TRUE, sep = ',')
+nba.games <- nba.games[nba.games$GameTypeID == 1,]
+nba.games <- nba.games[nba.games$Season <= maxSeason,]
+nba.games <- nba.games[nba.games$Season >= minSeason,]
+nba.games <- nba.games[as.character(nba.games$Attendance) != 'NULL',]
+nba.games <- nba.games[as.integer(as.character(nba.games$Attendance)) > 0,]
+nba.games$Season <- as.factor(nba.games$Season)
+nba.games$GameTypeID <- as.factor(nba.games$GameTypeID)
+nba.games$AwayScore <- as.integer(as.character(nba.games$AwayScore))
+nba.games$HomeScore <- as.integer(as.character(nba.games$HomeScore))
+nba.games$TotalPoints <- as.integer(nba.games$HomeScore + nba.games$AwayScore)
+nba.games$HomeMargin <- nba.games$HomeScore - nba.games$AwayScore
+nba.games$Attendance <- as.numeric(as.character(nba.games$Attendance)) / 1000
+nba.games$GameDate <- as.Date(nba.games$GameDate)
+nba.games$IsNeutralSite <- nba.games$IsNeutralSite == 1
+nba.games$AreSameConference <- nba.games$AreSameConference == 1
+nba.games$AreSameDivision <- nba.games$AreSameDivision == 1
+nba.games$AwayMilesAway <- nba.games$AwayMilesAway / 100
+nba.games$AwayMilesTraveled <- nba.games$AwayMilesTraveled / 100
+nba.games$HomeMilesTraveled <- nba.games$HomeMilesTraveled / 100
+
+nba.games$OvertimePeriods <- NULL
+nba.games$AwayResult <- NULL
+nba.games$HomeResult <- NULL
+nba.games$AreSameConference <- NULL
+nba.games$AreSameDivision <- NULL
+```
+
+```{r 'setup - functions', echo = FALSE, warning = FALSE, message = FALSE}
+printModelSummary <- function(model, modelDisplayName) {
+	model.summary <- summary(model)
+	varFrame <- data.frame('Estimate' = model.summary$coefficients[, 1],
+						'Std Err' = model.summary$coefficients[, 2],
+						't-Value' = model.summary$coefficients[, 3],
+						'p-Value' = format.pval(model.summary$coefficients[, 4], digits = pValDigits))
+	rownames(varFrame) <- names(model$coefficients)
+	kable(varFrame, caption = paste('Summary of', modelDisplayName))
+}
+
+addSummaryStatisticsRow <- function(dataFrame, dataColumn, columnName) {
+	dataSummaryRow <- data.frame('Min' = min(dataColumn),
+									'Q1' = quantile(dataColumn, 0.25),
+									'Mean' = round(mean(dataColumn), digits = 2),
+									'Median' = round(median(dataColumn), digits = 2),
+									'Q3' = quantile(dataColumn, 0.75),
+									'Max' = max(dataColumn),
+									'Std Dev' = round(sd(dataColumn), digits = 2))
+	row.names(dataSummaryRow) <- c(columnName)
+	if (is.null(dataFrame) || nrow(dataFrame) == 0) {
+		return (dataSummaryRow)
+	} else {
+		return(rbind(dataFrame, dataSummaryRow))
+	}
+}
+getSummaryTable <- function(cols) {
+	summaryTable <- NULL
+	for (colName in cols) {
+		summaryTable <- addSummaryStatisticsRow(summaryTable, nba.games[,colName], colName)
+	}
+	return(summaryTable)
+}
+```
+
+#Introduction
+In the multi-billion dollar industry of professional sports, there is an often overlooked, yet fundamentally necessary, requirement which drives the competition that excites fans: both teams showing up to the game. Before every season, the league offices decide who will play where and when. There are many decisions that go into the final schedule that fans look forward to receiving every off-season. While the schedule is a clear necessity, it introduces many game-altering factors for both teams.
+
+There are a wide range of game-changing factors introduced by the schedule. Four important factors are if a team is home or away, how far a team travels, how much rest each team has, and the attendance of the game. Identifying how exactly these factors influence the game for both teams will allow for potential advantages to be found and the expectations for team performance in those games to be changed accordingly. The successful development of a model (or series of models) that defines the impact of these factors can then be used in other systems, such as a Monte Carlo simulation, in order to improve the quality of those systems.
+
+Ultimately, models focusing on points scored and fouls committed will be created for both the home and away teams.
+
+#Data
+##Data Definition
+The core observation unit in this analysis is the game. Each game includes the participating teams, the game result, derived distance values based on team and game locations, final game statistics, and statistics for games that fall into the window of `r pastGameWindow` games prior to the observed game. This `r pastGameWindow` game window, referred to as the *past game window*, was used as a baseline for a team's performance in the games leading up to an observed game. The window width of `r pastGameWindow` games was chosen after replicating the data set multiple times with differing game windows and seeing similar results when `r pastGameWindow` or more games were used and very different values when less games were used. 
+
+###Data Source
+All data utilized in this analysis comes from the Sports Data system at Fox Sports. This system processes and stores raw data from Stats, Inc. Direct access to this proprietary system is available for select employees of Fox Sports. Any additional information regarding the data used is available upon request.
+
+###Game Selection
+
+####Standard Criteria
+The following criteria were used to determine which games would be included in this analysis:
+
+* The game must be from any of the seasons between 2005 and 2016, inclusive.
+* The game must be in the regular season.
+* The game must be preceded by at least `r pastGameWindow` regular seasons game for both teams in a given season.
+* The game must have a status of final. Any game that has a status of forfeited will not be selected.
+* A game with a status of final can have a forfeited or canceled game in its past game window. In that case, the forfeited/canceled game will be omitted from the past game window. This will result in only `r (pastGameWindow-1)` games in the past game window.
+
+####Neutral Site Games
+Given the lack of a true home team, neutral site games are considered a separate concern when looking at the impact of the schedule on NBA team performance. With this in mind, all games played at neutral sites were removed from the data set. This means that `r nrow(nba.games[nba.games$IsNeutralSite,])` of `r nrow(nba.games)` games (`r round(((nrow(nba.games[nba.games$IsNeutralSite,])/nrow(nba.games)) * 100), digits = 3)`%) were removed. As a result, all values for the distance that the home team is playing from their home arena is 0.
+```{r 'setup - remove neutral site games', cache = allowCache, echo = FALSE, warning = FALSE}
+nba.games <- nba.games[(nba.games$IsNeutralSite == FALSE),]
+```
+####Extended Breaks Between Games
+```{r 'data summary - schedule correlation table - setup before winsorizing days', echo = FALSE, cache = allowCache, results = FALSE}
+corrVarColNames <- c('HomeScore', 'AwayScore', 'Attendance', 'AwayRest', 'HomeRest', 'HomeRestAdv', 'AwayMilesTraveled', 'AwayMilesAway', 'AwayGameNum', 'HomeGameNum')
+corrVars <- nba.games[, corrVarColNames]
+scheduleCor <- cor(corrVars)
+```
+```{r 'setup - winsorize rest days', echo = FALSE, cache = allowCache}
+restCounts <- rbind(data.frame(RestDays = nba.games$HomeRest), data.frame(RestDays = nba.games$AwayRest))
+restCounts.freq <- table(restCounts$RestDays)
+restCounts.disp <- matrix(ncol = length(restCounts.freq), nrow = 4)
+restCounts.disp[1,] <- as.integer(names(restCounts.freq))
+restCounts.disp[2,] <- as.integer(restCounts.freq)
+restCounts.disp[3,] <- restCounts.freq / nrow(restCounts)
+for (val in seq(from = 1, to = ncol(restCounts.disp), by = 1)) {
+	restCounts.disp[4, val] <- sum(restCounts.disp[3, (restCounts.disp[1,] <= restCounts.disp[1, val])])
+}
+restCounts.disp[3,] <- round(restCounts.disp[3,], digits = 2)
+restCounts.disp[4,] <- round(restCounts.disp[4,], digits = 2)
+restCounts.disp <- as.data.frame(restCounts.disp)
+rownames(restCounts.disp) <- c('RestDays', 'Freq', 'Density', 'Cum Density')
+colnames(restCounts.disp) <- restCounts.disp["RestDays",]
+restCounts.disp <- restCounts.disp[c('Freq', 'Density', 'Cum Density'),]
+restCounts.disp['Freq',] <- as.character(as.integer(restCounts.disp['Freq',]))
+
+restDaysMax <- 4
+nba.games$HomeRest <- ifelse(nba.games$HomeRest > restDaysMax, restDaysMax, nba.games$HomeRest)
+nba.games$AwayRest <- ifelse(nba.games$AwayRest > restDaysMax, restDaysMax, nba.games$AwayRest)
+#nba.games$HomeRest <- factor(ifelse(nba.games$HomeRest > restDaysMax, restDaysMax, nba.games$HomeRest), labels = seq(from = 0, to = restDaysMax, by = 1))
+#nba.games$AwayRest <- factor(ifelse(nba.games$AwayRest > restDaysMax, restDaysMax, nba.games$AwayRest), labels = seq(from = 0, to = restDaysMax, by = 1))
+```
+The NBA has multiple reasons which may cause a team to have extended breaks between games. The most common reason in the regular season is the All-Star break. Further exploration of this, as discussed in the data summary, show that the number of qualified games where a team has `r restDaysMax`-or-more days of rest is quite small. As such, the rest days data was winsorized to a maximum value of `r restDaysMax` days.
+
+The frequency table leading to the decision to winsorize at 99% can be found below.
+```{r 'data summary - rest days - frequency', echo = FALSE, cache = allowCache}
+kable(restCounts.disp)
+```
+
+###Variable Definitions
+The following variables are used in this analysis and are the key focus points to be analyzed.
+
+* *Season* - factor
+	+ The year in which the season containing this game began. If the first regular season game for a sport is in October of 2015 and the championship for that sport is determined in June of 2016, the value will be 2015.
+* *AwayTeam/HomeTeam* - factor
+	+ A factor based on the preferred short display form for a particular season. This value may be different across years for a particular team based on the team changing cities or names. (For example, the Seattle Supersonics became the Oklahoma City Thunder prior to the 2008 season. The team is *'SEA'* in 2007 and *'OKC'* in 2008.)
+* *AwayScore/HomeScore* - int
+	+ Number of points scored *in regulation* by the associated team.
+* *GameDate* - date
+	+ The date in the Eastern Time Zone that the game was scheduled to start. If a game was rescheduled, this date represents the new scheduled date. The initial game will not appear in the data.
+* *Attendance* - int
+	+ Game attendance in thousands
+* *AwayRest/HomeRest* - int
+	+ Number of calendar days between the game being referenced and the previous game. If the referenced game is Thursday and the previous game was Monday, the value will be *2* as Tuesday and Wednesday were rest days.
+* *AwayMilesTraveled/HomeMilesTraveled* - int
+	+ Travel distance in hundreds of miles
+	+ The number of miles between the venue of the previous game and the venue of the referenced game. This value is calculated using the longitude and latitude values for each of the venues and, as such, represents the direct distance between venues and not the driving distance.
+* *AwayMilesAway/HomeMilesAway* - int
+	+ Distance away from home stadium in hundreds of miles
+	+ If the game is not at a neutral site, the value will be 0 for the home team. This value is calculated using the longitude and latitude values for each of the venues and, as such, represents the direct distance between venues and not the driving distance.
+* *HomeMargin* - int
+	+ The difference between the *HomeScore* and the *AwayScore* ($HomeScore-AwayScore$)
+* __*Statistics*__
+	+ The following statistics are also included for both teams in each game as well as in the past game window (both for the team and against): Score, Rebounds, Blocks, Assists, Steals, Turnovers, ThreePointMakes, Fouls, FreeThrowAtts
+
+##Summary Statistics
+A table with all game and schedule summary statistics can be found in the appendix.
+
+##Data Exploration
+###Correlation between Variables
+####Schedule and Result Based
+The correlation between schedule-based and result variables was investigated to explore the impact of scheduling. The resulting correlation matrix can be found below.
+
+```{r 'data summary - correlation between schedule and result variables', echo = FALSE, fig.height = corrPlotCexSize + 1, fig.width = corrPlotCexSize}
+corrplot::corrplot(scheduleCor, tl.col = 'black', number.font = 2, method = 'number', order = 'AOE', tl.cex = 0.6, number.cex = corrPlotCexSize / (ncol(corrVars) * 0.7), cl.pos = 'b', cl.cex = 0.4)
+```
+
+The above matrix shows that there is only 1 sets of strongly correlated (r > 0.7) variables in the schedule-based/result variable set. That is the pair of the *HomeGameNumber* and *AwayGameNumber* variables. These variables have a perfect correlation of r=1. As such, *AwayGameNumber* was dropped moving forward.
+
+####Past Game Window Statistics
+The past game window statistics (namely score, rebounds, blocks, assists, steals, turnovers, fouls, and free throw attempts) were evaluated to determine if there was a correlation between statistics. The full correlation matrix can be found in the appendix. The following pairs were determined to be strongly correlated:
+
+1) *TeamTurnovers* - *OppSteals*: The most frequent turnover for a team is when the other team records a steal.
+2) *Fouls* - *OppFouls*: This correlation indicates that the number of fouls called against each team increases at an approximately equal rate. There are multiple factors which can contribute to the number of fouls in a game for a given team. Examples of these factors include the officials, being the home or away team, and the pace of the game. At first glance, it is good to see that the number of fouls between the two teams is highly correlated. Further analysis is necessary, and would later be performed in this analysis, to determine if there is a statistical difference between the number of fouls called against the home and away teams.
+
+###Home Court Advantage
+To show there is a statistically significant difference between home score and away score, a paired two-sample t-test for the difference of means was performed. The results and other relevant values can be found below.
+```{r 'data summary - home court advantage', echo = FALSE, cache = allowCache}
+nba.tTest.points <- t.test(nba.games$HomeScore, nba.games$AwayScore, paired = TRUE)
+nba.tTest.points.ciDisp <- paste('(', round(nba.tTest.points$conf.int[1], digits = 2), ',', round(nba.tTest.points$conf.int[2], digits = 2), ']', sep = '')
+nba.tTest.points.sum <- data.frame('t-value' = round(c(nba.tTest.points$statistic), digits = 2)
+						, 'df' = round(c(nba.tTest.points$parameter), digits = 0)
+						, 'p-value' = format.pval(c(nba.tTest.points$p.value), digits = pValDigits)
+						, 'CI' = c(nba.tTest.points.ciDisp)
+						, 'Mean Est' = round(c(nba.tTest.points$estimate[1]), digits = 4)
+					)
+rownames(nba.tTest.points.sum) <- 't-Test'
+kable(nba.tTest.points.sum, caption = 'Paired Two-Sample t-Test for Home Court Advantage')
+```
+
+The p-values for the mean difference between the home team and the away team for the NBA is `r format.pval(nba.tTest.points$p.value, digits=pValDigits)`. This shows that there is a statistically significant difference between home team scoring and away team scoring, thus statistically verifying the existance of home court advantage. Additionally, the advantage, or mean difference, is approximately `r round(nba.tTest.points$estimate, digits = 2)` for the NBA with a 95% confidence interval of `r nba.tTest.points.ciDisp`, showing that the advantage is approximately one scoring play.
+
+###Home Advantage in Personal Fouls
+Many sports fans believe that there is a major impact on the officiating of a game based on which team is home and which team is away. There are many ways that the officiating crew impacts the game. The best direct measure for the impact of officiating in the game is the number of calls made. This includes both fouls and possession-costing violations. It should be noted that no-call decisions are just as important. A no-call can show up in the final box score as a turnover, as points, or as a rebound. Given that there is no reliable way to determine where no-call decisions were made for the full duration of each game during the analyzed period, the best way to determine the home court impact on officiating is to analyze the number of fouls called against each team. In order to test if there is a difference in the number of fouls called based on which team is home and which team is away, a paired two-sample t-test on the difference of the mean number of personal fouls was performed. The results can be found below.
+
+```{r 'data summary - home advantage in fouls', echo = FALSE, cache = allowCache}
+nba.tTest.fouls <- t.test(nba.games$HomeFouls, nba.games$AwayFouls, paired = TRUE)
+nba.tTest.fouls.ciDisp <- paste('(', round(nba.tTest.fouls$conf.int[1], digits = 2), ',', round(nba.tTest.fouls$conf.int[2], digits = 2), ']', sep = '')
+nba.tTest.fouls.sum <- data.frame('t-value' = round(c(nba.tTest.fouls$statistic), digits = 2)
+						, 'df' = round(c(nba.tTest.fouls$parameter), digits = 0)
+						, 'p-value' = format.pval(c(nba.tTest.fouls$p.value), digits = pValDigits)
+						, 'CI' = c(nba.tTest.fouls.ciDisp)
+						, 'Mean Est' = round(c(nba.tTest.fouls$estimate[1]), digits = 4)
+					)
+rownames(nba.tTest.fouls.sum) <- 't-Test'
+kable(nba.tTest.fouls.sum, caption = 'Paired Two-Sample t-Test for Home Advantage in Fouls')
+```
+
+This shows that there is, in fact, a difference in the number of fouls called based on the home/away status of a team. This advantage is less than one foul per game and, while statistically significant, can arguably be seen as negligible on the final outcome of the game.
+
+###Distance Summary
+The distance of travel, both between games and from a team's home court, is an important aspect of the impact of scheduling on NBA team performance. With teams scattered across North America, it is important to know how far apart teams may be. The greatest and shortest distances between 2016 home arenas can be found below. (A full chart of stadium-to-stadium distances can be found in the appendix.)
+
+```{r 'data summary - max and min arena distances', echo = FALSE}
+nba.arenaDist <- read.csv('NbaArenaDistance.csv')
+colnames(nba.arenaDist) <- c('Stadium1', 'Stadium2', 'Distance')
+nba.arenaDist <- nba.arenaDist[nba.arenaDist$Stadium1 != nba.arenaDist$Stadium2,]
+nba.arenaDist <- nba.arenaDist[as.character(nba.arenaDist$Stadium1) < as.character(nba.arenaDist$Stadium2),]
+
+nba.arenaDist.summary <- data.frame('Min' = min(nba.arenaDist$Distance), 'Q1' = quantile(nba.arenaDist$Distance, 0.25), 'Med' = median(nba.arenaDist$Distance), 'Mean' = round(mean(nba.arenaDist$Distance), digits = 2), 'Q3' = quantile(nba.arenaDist$Distance, 0.75), 'Max' = max(nba.arenaDist$Distance))
+rownames(nba.arenaDist.summary) <- c('Distance')
+kable(nba.arenaDist.summary, caption = 'Summary Statistics for Arena-to-Arena Distance')
+
+nba.arenaDist <- nba.arenaDist[order(nba.arenaDist$Distance),]
+nba.arenaDist.botDist <- nba.arenaDist[seq(from = 1, to = 8, by = 1),]
+nba.arenaDist.botDist <- data.frame('Stadium1' = nba.arenaDist.botDist$Stadium1, 'Stadium2' = nba.arenaDist.botDist$Stadium2, 'Distance' = nba.arenaDist.botDist$Distance)
+kable(nba.arenaDist.botDist, caption = paste('Bottom 8 Distances Between 2016 Home Arenas in Miles'))
+nba.arenaDist <- nba.arenaDist[order(-nba.arenaDist$Distance),]
+nba.arenaDist.topDist <- nba.arenaDist[seq(from = 1, to = 8, by = 1),]
+nba.arenaDist.topDist <- data.frame('Stadium1' = nba.arenaDist.topDist$Stadium1, 'Stadium2' = nba.arenaDist.topDist$Stadium2, 'Distance' = nba.arenaDist.topDist$Distance)
+kable(nba.arenaDist.topDist, caption = paste('Top 8 Distances Between 2016 Home Arenas in Miles'))
+```
+
+The shortest distance between venues is listed as the Staples Center (LAC) to the Staples Center (LAL). While this is the same venue, it is viewed as two different venues for the purpose of home court advantage due to the differing atmospheres based on which franchise (LAL or LAC) is acting as host. As such, this anomoly was determined to be correct and was not adjusted. The BKN-NY-PHI team group stands out as having many short-distance pairs, potentially providing an advantage to those teams. On the other side, two teams (BOS and GS) each are part of at least four of the largest distances between arenas.
+
+#Method
+##Desired Modeling Outcomes
+Given the ultimate desire to use the resulting models in a Monte Carlo simulation, each analyzed statistic (such as score or fouls) will be broken into two models, one for the home team and one for the away team. This was chosen in favor of one model for statistic total and one for team margin.
+
+##Variable Selection
+The impact of scheduling on the outcome of game performance was analyzed using the relevant variables from the previous game stat window along with the schedule-based variables for the analyzed game. The statistics from the previous game stat window include the statistic value for the team and the allowed statistic value for the opponent. For example, the baseline statistics used when analyzing HomeScore will be the average score for the home team in their past `r pastGameWindow` games and the average score allowed in the past `r pastGameWindow` games for the away team. The schedule-based statistics used in model building are *AwayRest*, *HomeRest*, *AwayMilesTraveled*, *HomeMilesTraveled*, *AwayMilesAway*, *Attendance*, and *HomeGameNum*.
+
+##Model Creation
+For each of the desired models, a simple linear regression was performed using a model that was created using the stepwise fitting method. The entry and exit p-value for this process was set at `r stepEntryPVal`. This p-value translated to a one-tailed chi-square value of `r round(stepEntryVal, digits = 3)` for the *k* parameter of the *step* method. After each model was created, its fitness was analyzed using residual, normal Q-Q, scale-location, and residual vs leverage plots produced from the data.
+
+#Analysis
+
+##Points Scored
+The goal of every NBA game is to outscore the opponent. With this in mind, the score of a game is the most important metric of the performance of an NBA team. An effective model of the impact of scoring on each of the schedule-based metrics is the highest modeling priority. Visualizations of the dependent variables (*HomeScore* and *AwayScore*) can be found below.
+
+```{r 'analysis - score - histograms', echo = FALSE}
+binWidth <- 5
+nba.score.home.plot <- ggplot(data = nba.games, aes(nba.games$HomeScore)) +
+	geom_histogram(aes(y = ..density..), binwidth = binWidth, col = 'black', fill = 'white') +
+	xlab('Home Score') +
+	ggtitle('Histogram of Home Score') +
+	geom_density(col = 2, bw = binWidth)
+
+nba.score.away.plot <- ggplot(data = nba.games, aes(nba.games$AwayScore)) +
+	geom_histogram(aes(y = ..density..), binwidth = binWidth, col = 'black', fill = 'white') +
+	xlab('Away Score') +
+	ggtitle('Histogram of Away Score') +
+	geom_density(col = 2, bw = binWidth)
+grid.arrange(nba.score.home.plot, nba.score.away.plot, ncol = 2)
+```
+
+###Model Creation
+
+Models were created by stepwise fitting a linear regression model using the baseline and schedule-based variables described previously. The summaries of the resulting models can be found below.
+
+```{r 'analysis - score - model creation', echo = FALSE, cache = allowCache}
+nba.score.home.model <- step(lm('HomeScore ~ 1', data = nba.games), scope = list(upper = lm(as.formula('HomeScore ~ PrevHomeScore + PrevOppAwayScore + HomeRest + AwayRest + AwayMilesAway + HomeMilesTraveled + AwayMilesTraveled + HomeGameNum + Attendance'), data = nba.games)), direction = 'both', k = stepEntryVal, trace = FALSE)
+printModelSummary(nba.score.home.model, 'Home Score Model')
+nba.score.home.model.homeRest <- summary(nba.score.home.model)$coefficients["HomeRest", "Estimate"]
+nba.score.home.model.awayRest <- summary(nba.score.home.model)$coefficients["AwayRest", "Estimate"]
+nba.games$HomeScorePred <- predict(nba.score.home.model)
+nba.score.away.model <- step(lm('AwayScore ~ 1', data = nba.games), scope = list(upper = lm(as.formula('AwayScore ~ PrevAwayScore + PrevOppHomeScore + HomeRest + AwayRest + AwayMilesAway + HomeMilesTraveled + AwayMilesTraveled + HomeGameNum + Attendance'), data = nba.games)), direction = 'both', k = stepEntryVal, trace = FALSE)
+printModelSummary(nba.score.away.model, 'Away Score Model')
+nba.games$AwayScorePred <- predict(nba.score.away.model)
+```
+
+###Model Diagnostics
+Plotting the predicted home scores versus the residual values produced by the models resulted in the following residual plots.
+
+```{r 'analysis - score - predicted vs residual', echo = FALSE, cache = allowCache}
+par(xpd = TRUE)
+nba.score.home.preds <- data.frame('Predicted' = predict(nba.score.home.model),
+									'Residuals' = nba.score.home.model$residuals,
+									'Actual' = nba.score.home.model$model[names(nba.score.home.model$residuals),'HomeScore'])
+nba.score.home.resPlot <- ggplot(nba.score.home.preds, aes(Predicted, Residuals)) +
+	geom_point() +
+	ggtitle('Home Score - Residual Plot')
+
+nba.score.away.preds <- data.frame('Predicted' = predict(nba.score.away.model),
+									'Residuals' = nba.score.away.model$residuals,
+									'Actual' = nba.score.away.model$model[names(nba.score.away.model$residuals), 'AwayScore'])
+nba.score.away.resPlot <- ggplot(nba.score.away.preds, aes(Predicted, Residuals)) +
+	geom_point() +
+	ggtitle('Away Score - Residual Plot')
+
+grid.arrange(nba.score.home.resPlot, nba.score.away.resPlot, ncol = 2)
+```
+
+
+The above plots, in conjunction with additional diagnostic plots available in the appendix, show that the regression is a solid fit and does not show characteristics which would tend to indicate issues in the model.
+
+###Model Interpretation
+One of the key aspects of the two points models is that the baseline statistics are kept in both models. This means that the two baseline calibration variables in the previous game window are still extremely important to fitting the ultimate regression model. There are five other variable sets that occur across the two models that are statistically significant to the understanding of schedule-based influence on scoring.
+
+####Rest Days
+The home score model sees `r round(nba.score.home.model.homeRest, digits = 3)` additional points for each day of rest (up to 4) and `r round(abs(nba.score.home.model.awayRest), digits = 3)` fewer points for each day of away rest (up to 4). Meanwhile, the away score model sees `r round(nba.score.away.model$coefficients[["AwayRest"]], digits = 3)` additional points per day of away rest. The presence of away rest days in both models means that the number of days of away rest results in an impact on the ultimate home game margin of `r round(abs(nba.score.home.model$coefficients[["AwayRest"]]) + abs(nba.score.away.model$coefficients[["AwayRest"]]), digits = 3)` points. This means that the number of away days of rest, completely ignoring home days of rest, can represent a swing of up to `r 4 * round(abs(nba.score.home.model$coefficients[["AwayRest"]]) + abs(nba.score.away.model$coefficients[["AwayRest"]]), digits = 3)` points in favor of the away team in a single game. This value, which is more than what can be achieved in a single possession, indicates that a game-altering scoring change can be achieved just by the number of rest days scheduled between games for the away team by the league office. It should be noted that the away team having 4 days rest and the home team having no rest is a situation that would likely be avoided in the interest of fair competition. If the home team has 2 days of rest compared to 4 days rest for the away team, the expected difference in score as produced by the scheduled rest days would be `r round(abs(abs(2 * nba.score.home.model.homeRest) - (4 * (abs(nba.score.home.model$coefficients[["AwayRest"]]) + abs(nba.score.away.model$coefficients[["AwayRest"]])))), digits = 3)` points. This is still greater than the two points for a standard field goal, meaning that a decisive difference may come from just from the number of rest days scheduled.
+
+####Away Miles Away
+An interesting aspect of the two scoring models is that the number of points goes up for both the home and away scores based on the number of miles (by the hundred) away the away team is from their home court for a given game. The number of points increases by `r round(nba.score.home.model$coefficients[["AwayMilesAway"]], digits = 3)` for the home team and `r round(abs(nba.score.away.model$coefficients[["AwayMilesAway"]]), digits = 3)` for the away team based on the away team miles away from home. Based on both teams having positive values for this measure, the pace of the game can be said to increase by `r round(abs(nba.score.home.model$coefficients[["AwayMilesAway"]]) + abs(nba.score.away.model$coefficients[["AwayMilesAway"]]), digits = 3)` per game per hundred miles away. While there may be many explanations for this simultaneous increase for both teams, one of the strongest possibilities for this increase in pace is the decrease in concentration that results from extended travel. A reduced concentration leads to more possessions for both teams and, as such, an increased total score for the game.
+
+####Attendance
+The away team scores `r round(nba.score.away.model$coefficients[["Attendance"]], digits = 3)` fewer points per 1000 fans in attendance per game. This means that the middle 50% of games (based on attendance) see the away team scoring between `r round(nba.score.away.model$coefficients[["Attendance"]] * quantile(nba.games$Attendance, 0.25), digits = 3)` and `r round(nba.score.away.model$coefficients[["Attendance"]] * quantile(nba.games$Attendance, 0.75), digits = 3)` fewer points per game. This indicates that having a strong attendance as the home team has a statistically significant impact on the final score of the game, even if it does only have a direct (and negative) impact on the final score of the away team.
+
+####Home Miles Traveled
+If a home team is returning from a road trip, the away team is expected to score `r round(nba.score.away.model$coefficients[["HomeMilesTraveled"]], digits = 3)` more points per hundred miles on the return trip for the home team.  The impact of this travel, if the home team traverses the greatest distance between venues on their return trip, can result in the away team scoring as many as `r round(abs(max(nba.arenaDist$Distance / 100) * nba.score.away.model$coefficients[["HomeMilesTraveled"]]), digits = 3)` more points in a given game. This also means that it is advantageous for an away team to play in the first game of the home stand of their hosts. It is interesting to note that the number of points scored by the home team is not impacted by their own travel.
+
+####Home Game Number
+The home game number, which represents how far into the season both teams are, has a positive coefficient of `r round(nba.score.away.model$coefficients[["HomeGameNum"]], digits = 3)` for the away team only. This means that an away team playing in the last scheduled game for the home team will score `r round(82 * nba.score.away.model$coefficients[["HomeGameNum"]], digits = 3)` points more than they would score, with all else equal, if it were the first game of the home team. As with the home miles traveled, there is no impact introduced by the *HomeGameNum* on the home team score.
+
+##Personal Fouls
+The number of fouls was proven earlier as being advantageous toward the home team (by less than one foul per game). This advantage having roots in the schedule was further analyzed.
+
+```{r 'analysis - fouls - histograms', echo = FALSE}
+binWidth <- 3
+nba.fouls.home.plot <- ggplot(data = nba.games, aes(nba.games$HomeFouls)) +
+	geom_histogram(aes(y = ..density..), binwidth = binWidth, col = 'black', fill = 'white') +
+	xlab('Home Fouls') +
+	ggtitle('Histogram of Home Fouls') +
+	geom_density(col = 2, bw = binWidth)
+
+nba.fouls.away.plot <- ggplot(data = nba.games, aes(nba.games$AwayFouls)) +
+	geom_histogram(aes(y = ..density..), binwidth = binWidth, col = 'black', fill = 'white') +
+	xlab('Away Fouls') +
+	ggtitle('Histogram of Away Fouls') +
+	geom_density(col = 2, bw = binWidth)
+grid.arrange(nba.fouls.home.plot, nba.fouls.away.plot, ncol = 2)
+```
+
+###Model Creation
+Models were created by stepwise fitting a linear regression model using the baseline and schedule-based variables described previously. The summaries of the resulting models can be found below.
+```{r 'analysis - fouls - model creation', echo = FALSE, cache = allowCache}
+nba.fouls.home.model <- step(lm('HomeFouls ~ 1', data = nba.games), scope = list(upper = lm(as.formula('HomeFouls ~ PrevHomeFouls + PrevOppAwayFouls + HomeRest + AwayRest + AwayMilesAway + HomeMilesTraveled + AwayMilesTraveled + HomeGameNum + Attendance'), data = nba.games)), direction = 'both', k = stepEntryVal, trace = FALSE)
+printModelSummary(nba.fouls.home.model, 'Home Fouls Model')
+nba.games$HomeFoulsPred <- predict(nba.fouls.home.model)
+nba.fouls.away.model <- step(lm('AwayFouls ~ 1', data = nba.games), scope = list(upper = lm(as.formula('AwayFouls ~ PrevAwayFouls + PrevOppHomeFouls + HomeRest + AwayRest + AwayMilesAway + HomeMilesTraveled + AwayMilesTraveled + HomeGameNum + Attendance'), data = nba.games)), direction = 'both', k = stepEntryVal, trace = FALSE)
+printModelSummary(nba.fouls.away.model, 'Away Fouls Model')
+nba.games$AwayFoulsPred <- predict(nba.fouls.away.model)
+```
+
+###Model Diagnostics
+Plotting the actual home scores versus the residual values produced by the models resulted in the following residual plots.
+
+```{r 'analysis - fouls - predicted vs residual', echo = FALSE, cache = allowCache}
+par(xpd = TRUE)
+nba.fouls.home.preds <- data.frame('Predicted' = predict(nba.fouls.home.model),
+									'Residuals' = nba.fouls.home.model$residuals,
+									'Actual' = nba.fouls.home.model$model[names(nba.fouls.home.model$residuals),'HomeFouls'])
+nba.fouls.home.resPlot <- ggplot(nba.fouls.home.preds, aes(Predicted, Residuals)) +
+	geom_point() +
+	ggtitle('Home Fouls - Residual Plot')
+
+nba.fouls.away.preds <- data.frame('Predicted' = predict(nba.fouls.away.model),
+									'Residuals' = nba.fouls.away.model$residuals,
+									'Actual' = nba.fouls.away.model$model[names(nba.fouls.away.model$residuals), 'AwayFouls'])
+nba.fouls.away.resPlot <- ggplot(nba.fouls.away.preds, aes(Predicted, Residuals)) +
+	geom_point() +
+	ggtitle('Away Fouls - Residual Plot')
+
+grid.arrange(nba.fouls.home.resPlot, nba.fouls.away.resPlot, ncol = 2)
+```
+
+The above plots show that the regression is a solid fit and does not show characteristics which would tend to indicate issues in the model. Additional diagnostic plots, including a scale-location plot, can be found in the appendix. Both scale-location plots have definitive lattice-like patterns for plotted standardized residual values (y-axis) less than approximately 0.8. While finding patterns in diagnostic plots can indicate underlying issues in the model, the key use of this plot is to test for homoscedasticity. Given that the plot does not widen as the predicted value increases as well as the discrete nature of the dependent variable, this pattern is considered to be acceptable and not a cause for concern for these regression models.
+
+###Model Interpretation
+Both regression models ultimately included both baseline stats in the final variable selection. In fact, both foul models have approximately equal estimates between the team baseline stat (*PrevHomeFouls*/*PrevAwayFouls*) and the opponent allowed baseline stat (*PrevOppAwayFouls*/*PrevOppHomeFouls*). The home foul model includes a negative coefficient estimate of approximately `r round(nba.fouls.home.model$coefficients[["Attendance"]], digits = 3)` for each 1000 fans in attendance at a particular game. This means that with approximately 16000 fans, the home team has one foul less called against them. Given that the Q1 to Q3 range for attendance (in thousands) is [`r round(quantile(nba.games$Attendance, 0.25), digits = 2)`, `r round(quantile(nba.games$Attendance, 0.75), digits = 2)`] and the mean value is `r round(mean(nba.games$Attendance), digits = 2)`, most games have the home team aided by having one less foul called during the game than the away team. This also means that teams that have a smaller attendance will be less likely to have the reduction in fouls for the home team. The flip of that is also true: a home team that has extremely high attendance is more likely to have this reduction in fouls amplified. One potential explanation for this is that the officials are more leniant toward the home team in order to please the crowd. The officials, in general, call a similiar-but-not-equal number of fouls between the two teams. This model potentially identifies the reason for the statistical inequality previously tested and confirmed. Alternatively, this may be explained by the home team playing higher quality basketball due to the energy of the crowd. Regardless of the reason why, the size of the home crowd is advantageous for the home team in terms of fouls called during a home game.
+
+\newpage
+
+#Conclusion
+The impact of scheduling can be seen in the performance of teams in the NBA. From the number of rest days to the distance that the away team is from home, the scheduling impact can be seen directly in the score line of any NBA game. Additionally, the only scheduling variable which impacted both points and fouls in a game was the number of fans that a given team was able to have for a given game. With these advantages measured, the impact of scheduling can be efficiently included in a Monte Carlo simulation to predict the expected outcome of NBA games in the currently scheduled season.
+
+\newpage
+#Appendix
+##Summary Statistics Table
+
+```{r 'data summary - summary statistics - setup', echo = FALSE, cache = allowCache}
+nba.games$HomeRest <- as.integer(as.character(nba.games$HomeRest))
+nba.games$AwayRest <- as.integer(as.character(nba.games$AwayRest))
+
+summaryTable <- getSummaryTable(c('AwayScore', 'HomeScore', 'HomeMargin', 'AwayRest', 'HomeRest', 'HomeRestAdv', 'AwayMilesAway', 'AwayMilesTraveled', 'HomeMilesTraveled', 'Attendance', 'AwayAssists', 'HomeAssists', 'AwaySteals', 'HomeSteals', 'AwayTurnovers', 'HomeTurnovers', 'AwayRebounds', 'HomeRebounds', 'AwayBlocks', 'HomeBlocks', 'AwayFouls', 'HomeFouls', 'AwayFreeThrowAtts', 'HomeFreeThrowAtts', 'AwayFreeThrowMakes', 'HomeFreeThrowMakes', 'AwayThreePointMakes', 'HomeThreePointMakes'))
+kable(summaryTable, caption = 'Summary Statistics for Game and Schedule Variables')
+```
+
+\newpage
+##Game Statistics Correlation Matrix
+
+```{r 'data summary - correlation between game variables - schedule variables', echo = FALSE, fig.height = 8, fig.width = 7}
+corrVarColNames <- NULL
+for (statName in c('Score', 'Rebounds', 'Blocks', 'Assists', 'Steals', 'Turnovers', 'Fouls', 'FreeThrowAtts')) {
+	for (prefix in c('PrevOppAway', 'PrevAway', 'PrevHome', 'PrevOppHome')) {
+		nextName <- paste(prefix, statName, sep = '')
+		if (is.null(corrVarColNames)) {
+			corrVarColNames <- c(nextName)
+		} else {
+			corrVarColNames <- c(corrVarColNames, nextName)
+		}
+	}
+}
+corrVars <- nba.games[, corrVarColNames]
+varCorr <- cor(corrVars)
+rownames(varCorr) <- rep(' ', length(rownames(varCorr)))
+par(xpd = TRUE)
+corrplot(varCorr, tl.col = 'black', number.font = 2, type = 'lower', method = 'number', tl.cex = 0.6, number.cex = (8) / (ncol(corrVars) * 0.7), cl.pos = 'n', cl.cex = 0.4, tl.srt = 90, diag = FALSE, mar = c(1, 1, 1, 1))
+```
+
+\newpage
+##Arena Distance Chart
+```{r 'appendix - arena distance chart', echo = FALSE, warnings = FALSE, fig.width = 7.5, fig.height = 8, message = FALSE}
+nba.arenaDist <- read.csv('NbaArenaDistance.csv')
+nba.arenaDist <- reshape::cast(nba.arenaDist, A ~ B)
+nba.arenaDist.names <- as.character(nba.arenaDist$A)
+nba.arenaDist <- nba.arenaDist[, colnames(nba.arenaDist) != 'A']
+nba.arenaDist <- as.matrix(nba.arenaDist)
+rownames(nba.arenaDist) <- rep(' ', length(nba.arenaDist.names))
+colnames(nba.arenaDist) <- nba.arenaDist.names
+corrplot(nba.arenaDist, is.corr = FALSE, type = 'lower', method = 'number', col = 'black', diag = FALSE, cl.pos = 'n', tl.cex = 0.5, tl.srt = 90, tl.col = 'black', number.cex = 0.5)
+```
+
+\newpage
+##Home Score - Diagnostic Plots
+```{r 'appendix - HomeScore diagnostic plots', echo = FALSE}
+plot(nba.score.home.model, cex.caption = 0)
+```
+
+\newpage
+##Away Score - Diagnostic Plots
+```{r 'appendix - AwayScore diagnostic plots', echo = FALSE}
+plot(nba.score.away.model, cex.caption = 0)
+```
+
+\newpage
+##Home Fouls - Diagnostic Plots
+```{r 'appendix - HomeFouls diagnostic plots', echo = FALSE}
+plot(nba.fouls.home.model, cex.caption = 0)
+```
+
+\newpage
+##Away Fouls - Diagnostic Plots
+```{r 'appendix - AwayFouls diagnostic plots', echo = FALSE}
+plot(nba.fouls.away.model, cex.caption = 0)
+```
+
+\newpage
+##NbaGames.sql - Query for NBA game data used
+```{r 'PRINT NbaGames.sql', echo = FALSE}
+cat(readLines('NbaGames.sql'), sep = '\n')
+```
+
+\newpage
+##NbaArenaDistance.sql - Query for NBA arena distance analysis
+```{r 'PRINT NbaArenaDistance.sql', echo = FALSE}
+cat(readLines('NbaArenaDistance.sql'), sep = '\n')
+```

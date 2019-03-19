@@ -11,6 +11,7 @@ output:
     fig_height: 3.5
     toc: no
     toc_depth: 2
+    dev: png
   html_document:
     fig_height: 3.5
     fig_width: 6

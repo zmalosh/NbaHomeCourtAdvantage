@@ -9,13 +9,14 @@ The research was intended to be used in the creation of a Monte Carlo simulation
 
 ## Things I Would Do Differently - 2019 March 18
 * Investigate rest days as a categorical variable
+* Use data science project structure (comparable to https://drivendata.github.io/cookiecutter-data-science/)
 * Add variables for both total trip length and current progression into the current trip for the away team
   + This would be for number of days, number of games, and distance traveled.
-* Look at the home court advantage on a stadium-by-stadium basis.
-* Consider the impact of rivalries. This could be either structurally based (i.e. same division) or based on external considerations (such as an investigation of interactions on Twitter between fan bases).
-* Introduce a new section that introduces new models for postseason games.
 * Focus on using the _tidyverse_
   + _tidyverse_ is a collection of libraries with a common approach to common data science functions. This common approach and the surrounding community allow for improved support and debugging
   + Use _dplyr_ instead of _plyr_
   + Use _tidyr_ instead of _reshape_
   + _ggplot2_ is already part of _tidyverse_
+* Look at the home court advantage on a venue-by-venue basis.
+* Consider the impact of rivalries. This could be either hierarchically based (i.e. same division or conference), performance based (i.e. multiple playoff series in recent past), or based on external considerations (i.e. interactions on Twitter between fan bases).
+* Introduce a new section that introduces new models for postseason games.
